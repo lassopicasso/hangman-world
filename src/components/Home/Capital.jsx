@@ -15,13 +15,11 @@ function Capital() {
 
     if (matchedLetter) {
       console.log("hello");
+      //Search through capital name if input letter can be found
       let currentUnderscore = underscore;
-      let hello;
       for (let i = 0; i < capital.length; i++) {
-        if (capital[i] === key) {
-          if (i === 0 || capital[i - 1] === " ") {
-            key = key.toUpperCase();
-          }
+        if (capital[i] === key.toLowerCase()) {
+          key = i === 0 || capital[i - 1] === " " ? key.toUpperCase() : key;
           currentUnderscore = currentUnderscore.substring(0, i) + key + currentUnderscore.substring(i + 1);
         }
       }
