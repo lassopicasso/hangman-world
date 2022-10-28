@@ -5,6 +5,30 @@ function Capital() {
   const [worldData, setWorldData] = useState();
   const [countryData, setCountryData] = useState();
   const [loading, setLoading] = useState(true);
+  const [underscore, setUnderscore] = useState();
+
+  onkeydown = (event) => {
+    let key = event.key;
+    console.log(countryData.capital);
+    const capital = countryData.capital.toLowerCase();
+    let matchedLetter = capital.match(key) !== null;
+
+    if (matchedLetter) {
+      console.log("hello");
+      let currentUnderscore = underscore;
+      let hello;
+      for (let i = 0; i < capital.length; i++) {
+        if (capital[i] === key) {
+          if (i === 0 || capital[i - 1] === " ") {
+            key = key.toUpperCase();
+          }
+          currentUnderscore = currentUnderscore.substring(0, i) + key + currentUnderscore.substring(i + 1);
+        }
+      }
+      setUnderscore(currentUnderscore);
+    }
+    console.log(capital.match(key));
+  };
 
   useEffect(() => {
     (async function fetchData() {
@@ -22,19 +46,23 @@ function Capital() {
       }
     })();
   }, []);
+  useEffect(() => {
+    if (countryData) {
+      setUnderscore(countryData.capital.replace(/[a-z,A-Z]/g, "_"));
+    }
+  }, [countryData]);
 
   if (loading) {
     return <main>Fetching World...</main>;
   }
-  if (loading === false) {
-    
-  }
+
   return (
-    <div>
+    <div className="country">
       <div>{worldData.length}</div>
       <div>{countryData.capital.length}</div>
       <div>{countryData.name}</div>
-      <div>{countryData.capital}</div>
+      <div className="country__capital">{countryData.capital}</div>
+      <div className="country__capital">{underscore}</div>
     </div>
   );
 }
