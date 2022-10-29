@@ -1,29 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { api } from "../../constants/api";
 
-function Capital() {
+function Capital({ setLetter, setAccomplished }) {
   const [worldData, setWorldData] = useState();
   const [countryData, setCountryData] = useState();
   const [loading, setLoading] = useState(true);
   const [underscore, setUnderscore] = useState();
-  // const [underscoreTest, setUnderscoreTest] = useState();
-  // const [cTest, setCTest] = useState();
 
+  // if (letter) {
   onkeydown = (event) => {
-    let key = event.key;
+    setAccomplished(false);
+    let currentLetter = event.key;
+    setLetter(event.key);
     const capital = countryData.capital;
-    let matchedLetter = capital.match(key) || capital.toLowerCase().match(key) !== null;
-    // let capitalTest = cTest;
-    // let matchedLetterTest = capitalTest.match(key) || capitalTest.toLowerCase().match(key) !== null;
+    let matchedLetter = capital.match(currentLetter) || capital.toLowerCase().match(currentLetter.toLowerCase()) !== null;
 
     if (matchedLetter) {
       //Search through capital name if input letter can be found
       let currentUnderscore = underscore;
       for (let i = 0; i < capital.length; i++) {
-        if (capital[i].toLowerCase() === key.toLowerCase()) {
+        if (capital[i].toLowerCase() === currentLetter.toLowerCase()) {
           console.log(capital[i]);
-          key = capital[i].toUpperCase() === capital[i] ? key.toUpperCase() : key.toLowerCase();
-          currentUnderscore = currentUnderscore.substring(0, i) + key + currentUnderscore.substring(i + 1);
+          currentLetter = capital[i].toUpperCase() === capital[i] ? currentLetter.toUpperCase() : currentLetter.toLowerCase();
+          currentUnderscore = currentUnderscore.substring(0, i) + currentLetter + currentUnderscore.substring(i + 1);
         }
       }
 
@@ -31,24 +30,11 @@ function Capital() {
       if (currentUnderscore === countryData.capital) {
         const country = worldData[Math.floor(Math.random() * worldData.length)];
         setCountryData(country);
+        setAccomplished(true);
       } else {
         setUnderscore(currentUnderscore);
       }
     }
-    // if (matchedLetterTest) {
-    //   let currentUnderscoreTest = underscoreTest;
-    //   for (let i = 0; i < capitalTest.length; i++) {
-    //     if (capitalTest[i].toLowerCase() === key.toLowerCase()) {
-    //       console.log(capitalTest[i].toUpperCase());
-    //       console.log(capitalTest[i]);
-    //       console.log(capitalTest[i].toUpperCase() === capitalTest[i]);
-    //       key = capitalTest[i].toUpperCase() === capitalTest[i] ? key.toUpperCase() : key.toLowerCase();
-    //       // key = i === 0 || capitalTest[i - 1] === (" " || "-") ? key.toUpperCase() : key.toLowerCase();
-    //       currentUnderscoreTest = currentUnderscoreTest.substring(0, i) + key + currentUnderscoreTest.substring(i + 1);
-    //     }
-    //   }
-    //   setUnderscoreTest(currentUnderscoreTest);
-    // }
   };
 
   useEffect(() => {
@@ -60,7 +46,6 @@ function Capital() {
         setWorldData(countriesWithCapitals);
         const country = countriesWithCapitals[Math.floor(Math.random() * countriesWithCapitals.length)];
         setCountryData(country);
-        // setCTest("Saint-Pierre");
       } catch (error) {
         console.log(error);
       } finally {
@@ -71,7 +56,6 @@ function Capital() {
   useEffect(() => {
     if (countryData) {
       setUnderscore(countryData.capital.replace(/[a-z,A-Z]/g, "_"));
-      // setUnderscoreTest(cTest.replace(/[a-z,A-Z]/g, "_"));
     }
   }, [countryData]);
 
@@ -86,8 +70,6 @@ function Capital() {
       <div>{countryData.name}</div>
       <div className="country__capital">{countryData.capital}</div>
       <div className="country__capital">{underscore}</div>
-      {/* <div className="country__capital">{cTest}</div>
-      <div className="country__capital">{underscoreTest}</div> */}
     </div>
   );
 }
