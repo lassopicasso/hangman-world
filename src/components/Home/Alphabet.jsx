@@ -1,29 +1,43 @@
 import React, { useState, useEffect } from "react";
 
-function Alphabet({ letter, accomplished }) {
-  const alph = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  const [underscore, setUnderscore] = useState(alph.replace(/[A-Z]/g, "_"));
-
+function Alphabet({ letter, accomplished, capitalName, correctLetters }) {
+  const alphString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const [underscore, setUnderscore] = useState(alphString.replace(/[A-Z]/g, "_"));
+  const [underscoreArray, setUnderscoreArray] = useState([]);
+  console.log(correctLetters);
   useEffect(() => {
+    let currentUnderscore = underscore;
     if (letter) {
-      console.log(accomplished);
-      let currentUnderscore = underscore;
-      for (let i = 0; i < alph.length; i++) {
-        if (alph[i].toLowerCase() === letter.toLowerCase()) {
+      for (let i = 0; i < alphString.length; i++) {
+        if (alphString[i].toLowerCase() === letter.toLowerCase()) {
           currentUnderscore = currentUnderscore.substring(0, i) + letter.toUpperCase() + currentUnderscore.substring(i + 1);
-          setUnderscore(currentUnderscore);
-          if (accomplished) {
-            setUnderscore(alph.replace(/[A-Z]/g, "_"));
-          }
         }
+      }
+      if (accomplished) {
+        setUnderscore(alphString.replace(/[A-Z]/g, "_"));
+      } else {
+        setUnderscore(currentUnderscore);
+        let tempArray = [];
+        for (let i = 0; i < currentUnderscore.length; i++) {
+          tempArray.push(currentUnderscore[i]);
+        }
+        setUnderscoreArray(tempArray);
       }
     }
   }, [letter]);
-
+  console.log(capitalName);
   return (
-    <div>
-      <div className="alphabet">{alph}</div>
-      <div className="alphabet">{underscore}</div>
+    <div className="alphabet">
+      <div className="alphabet__underscore">
+        {underscoreArray.map((char, index) => {
+          return (
+            <span className={`${correctLetters.match(letter) && correctLetters.match(char.toLowerCase()) ? "alphabet__success" : char !== "_" ? "alphabet__failure" : ""}`} key={index}>
+              {char}
+            </span>
+          );
+        })}
+      </div>
+      <div className="alphabet__displayed">{alphString}</div>
     </div>
   );
 }

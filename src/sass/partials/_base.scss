@@ -2,8 +2,7 @@ body {
   width: 100%;
   min-height: 100vh;
   margin: 0;
-  background-color: blue;
-  color: white;
+  background-color: lightblue;
 }
 
 main {
@@ -18,5 +17,21 @@ main {
   letter-spacing: 5px;
 }
 .alphabet {
+  text-align: center;
+  overflow-wrap: break-word;
+}
+.alphabet__underscore {
   font-size: 22px;
+  margin-bottom: 5px;
+}
+.alphabet__displayed {
+  letter-spacing: 5.5px;
+}
+
+.alphabet__success {
+  color: darkgreen;
+}
+
+.alphabet__failure {
+  color: red;
 }

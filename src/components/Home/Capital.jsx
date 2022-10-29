@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { api } from "../../constants/api";
 
-function Capital({ setLetter, setAccomplished }) {
+function Capital({ setLetter, setAccomplished, correctLetters, setCorrectLetters }) {
   const [worldData, setWorldData] = useState();
   const [countryData, setCountryData] = useState();
   const [loading, setLoading] = useState(true);
@@ -19,10 +19,11 @@ function Capital({ setLetter, setAccomplished }) {
       //Search through capital name if input letter can be found
       let currentUnderscore = underscore;
       for (let i = 0; i < capital.length; i++) {
+        console.log(currentLetter.match(/[a-z]/i));
         if (capital[i].toLowerCase() === currentLetter.toLowerCase()) {
-          console.log(capital[i]);
           currentLetter = capital[i].toUpperCase() === capital[i] ? currentLetter.toUpperCase() : currentLetter.toLowerCase();
           currentUnderscore = currentUnderscore.substring(0, i) + currentLetter + currentUnderscore.substring(i + 1);
+          setCorrectLetters(correctLetters + currentLetter.toLowerCase());
         }
       }
 
@@ -65,8 +66,6 @@ function Capital({ setLetter, setAccomplished }) {
 
   return (
     <div className="country">
-      <div>{worldData.length}</div>
-      <div>{countryData.capital.length}</div>
       <div>{countryData.name}</div>
       <div className="country__capital">{countryData.capital}</div>
       <div className="country__capital">{underscore}</div>
