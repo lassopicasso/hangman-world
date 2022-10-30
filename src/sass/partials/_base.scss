@@ -1,8 +1,9 @@
 body {
   width: 100%;
-  min-height: 100vh;
+  // min-height: 100vh;
   margin: 0;
   background-color: lightblue;
+  font-size: 22px;
 }
 
 main {
@@ -31,7 +32,7 @@ main {
 }
 
 .alphabet__success {
-  color: darkgreen;
+  color: #13bf0a;
 }
 
 .alphabet__failure {
@@ -42,13 +43,19 @@ main {
   flex-direction: column;
 }
 
-.country {
-  text-align: center;
-}
+// .country {
+//   text-align: center;
+// }
 
 .container {
-  display: block;
-  width: 90%;
-  height: 80%;
-  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: space-around;
+  height: calc(40vh);
+  padding: 20px;
+  .country {
+    margin-top: 50px;
+  }
 }
