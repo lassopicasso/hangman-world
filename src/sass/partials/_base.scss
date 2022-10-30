@@ -16,9 +16,11 @@ main {
 .alphabet {
   letter-spacing: 5px;
 }
-.alphabet {
-  text-align: center;
-  overflow-wrap: break-word;
+
+.alphabet__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 .alphabet__underscore {
   font-size: 22px;
@@ -34,4 +36,19 @@ main {
 
 .alphabet__failure {
   color: red;
+}
+.alphabet__letter {
+  display: flex;
+  flex-direction: column;
+}
+
+.country {
+  text-align: center;
+}
+
+.container {
+  display: block;
+  width: 90%;
+  height: 80%;
+  margin: auto;
 }

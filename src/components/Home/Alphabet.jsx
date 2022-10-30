@@ -1,43 +1,45 @@
 import React, { useState, useEffect } from "react";
 
-function Alphabet({ letter, accomplished, capitalName, correctLetters }) {
+function Alphabet({ letter, accomplished, correctLetters }) {
   const alphString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   const [underscore, setUnderscore] = useState(alphString.replace(/[A-Z]/g, "_"));
   const [underscoreArray, setUnderscoreArray] = useState([]);
-  console.log(correctLetters);
+
+  console.log(accomplished);
   useEffect(() => {
     let currentUnderscore = underscore;
-    if (letter) {
-      for (let i = 0; i < alphString.length; i++) {
-        if (alphString[i].toLowerCase() === letter.toLowerCase()) {
-          currentUnderscore = currentUnderscore.substring(0, i) + letter.toUpperCase() + currentUnderscore.substring(i + 1);
-        }
-      }
-      if (accomplished) {
-        setUnderscore(alphString.replace(/[A-Z]/g, "_"));
-      } else {
-        setUnderscore(currentUnderscore);
-        let tempArray = [];
-        for (let i = 0; i < currentUnderscore.length; i++) {
-          tempArray.push(currentUnderscore[i]);
-        }
-        setUnderscoreArray(tempArray);
+    for (let i = 0; i < alphString.length; i++) {
+      if (alphString[i].toLowerCase() === letter.toLowerCase()) {
+        currentUnderscore = currentUnderscore.substring(0, i) + letter.toUpperCase() + currentUnderscore.substring(i + 1);
       }
     }
-  }, [letter]);
-  console.log(capitalName);
+    let tempArray = [];
+    if (accomplished) {
+      setUnderscore(alphString.replace(/[A-Z]/g, "_"));
+      for (let i = 0; i < alphString.length; i++) {
+        tempArray.push("_");
+      }
+    } else {
+      setUnderscore(currentUnderscore);
+      for (let i = 0; i < currentUnderscore.length; i++) {
+        tempArray.push(currentUnderscore[i]);
+      }
+    }
+    setUnderscoreArray(tempArray);
+  }, [letter, accomplished]);
+  console.log(alphString.substring(0, 1));
   return (
     <div className="alphabet">
-      <div className="alphabet__underscore">
+      <div className="alphabet__wrapper">
         {underscoreArray.map((char, index) => {
           return (
-            <span className={`${correctLetters.match(letter) && correctLetters.match(char.toLowerCase()) ? "alphabet__success" : char !== "_" ? "alphabet__failure" : ""}`} key={index}>
-              {char}
+            <span className="alphabet__letter" key={index}>
+              <span className={`alphabet__underscore ${correctLetters.match(char.toLowerCase()) ? "alphabet__success" : char !== "_" ? "alphabet__failure" : ""}`}>{char}</span>
+              <span className="alphabet__displayed">{alphString.substring(index, index + 1)}</span>
             </span>
           );
         })}
       </div>
-      <div className="alphabet__displayed">{alphString}</div>
     </div>
   );
 }

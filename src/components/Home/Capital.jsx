@@ -26,7 +26,6 @@ function Capital({ setLetter, setAccomplished, correctLetters, setCorrectLetters
           setCorrectLetters(correctLetters + currentLetter.toLowerCase());
         }
       }
-
       //Check if user has found all the letters
       if (currentUnderscore === countryData.capital) {
         const country = worldData[Math.floor(Math.random() * worldData.length)];
