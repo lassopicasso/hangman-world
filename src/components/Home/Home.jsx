@@ -15,7 +15,7 @@ function Home() {
     <main>
       <Header type="first" content="Hangman World" />
       <div className="container">
-        <Alphabet letter={letter.toLowerCase()} accomplished={accomplished} correctLetters={correctLetters} />
+        <Alphabet letter={letter.toLowerCase()} accomplished={accomplished} correctLetters={correctLetters} setCorrectLetters={setCorrectLetters} />
         <Stats wrongLetters={wrongLetters} accomplished={accomplished} attempts={attempts} />
         <Question setLetter={setLetter} setAccomplished={setAccomplished} correctLetters={correctLetters} setCorrectLetters={setCorrectLetters} wrongLetters={wrongLetters} setWrongLetters={setWrongLetters} attempts={attempts} setAttempts={setAttempts} />
       </div>

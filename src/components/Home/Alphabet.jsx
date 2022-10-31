@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function Alphabet({ letter, accomplished, correctLetters }) {
+function Alphabet({ letter, accomplished, correctLetters, setCorrectLetters }) {
   const alphString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   const [underscore, setUnderscore] = useState(alphString.replace(/[A-Z]/g, "_"));
   const [underscoreArray, setUnderscoreArray] = useState([]);
@@ -17,6 +17,7 @@ function Alphabet({ letter, accomplished, correctLetters }) {
       setUnderscore(alphString.replace(/[A-Z]/g, "_"));
       for (let i = 0; i < alphString.length; i++) {
         tempArray.push("_");
+        setCorrectLetters("");
       }
     } else {
       setUnderscore(currentUnderscore);
