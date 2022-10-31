@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Header from "../common/Header";
 import Alphabet from "./Alphabet";
-import Capital from "./Capital";
+import Question from "./Question";
 import Stats from "./Stats";
 
 function Home() {
@@ -17,7 +17,7 @@ function Home() {
       <div className="container">
         <Alphabet letter={letter.toLowerCase()} accomplished={accomplished} correctLetters={correctLetters} />
         <Stats wrongLetters={wrongLetters} accomplished={accomplished} attempts={attempts} />
-        <Capital setLetter={setLetter} setAccomplished={setAccomplished} correctLetters={correctLetters} setCorrectLetters={setCorrectLetters} wrongLetters={wrongLetters} setWrongLetters={setWrongLetters} attempts={attempts} setAttempts={setAttempts} />
+        <Question setLetter={setLetter} setAccomplished={setAccomplished} correctLetters={correctLetters} setCorrectLetters={setCorrectLetters} wrongLetters={wrongLetters} setWrongLetters={setWrongLetters} attempts={attempts} setAttempts={setAttempts} />
       </div>
     </main>
   );

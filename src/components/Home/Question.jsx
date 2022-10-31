@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { api } from "../../constants/api";
 
-function Capital({ setLetter, setAccomplished, correctLetters, setCorrectLetters, wrongLetters, setWrongLetters, attempts, setAttempts }) {
+function Question({ setLetter, setAccomplished, correctLetters, setCorrectLetters, wrongLetters, setWrongLetters, attempts, setAttempts }) {
   const [worldData, setWorldData] = useState();
   const [countryData, setCountryData] = useState();
   const [loading, setLoading] = useState(true);
@@ -77,4 +77,4 @@ function Capital({ setLetter, setAccomplished, correctLetters, setCorrectLetters
   );
 }
 
-export default Capital;
+export default Question;

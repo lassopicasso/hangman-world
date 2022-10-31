@@ -25,7 +25,7 @@ function Stats({ wrongLetters, accomplished, attempts }) {
         <div className="stats__gameOver">oh no!</div>
       ) : (
         <>
-          <button>Use 1 attempt to display first letter (Use 1 attempt)</button>
+          <button>Display first unknown letter (+1 attempt)</button>
           <div>
             <div>
               Attempts {attempts} / {chances}
