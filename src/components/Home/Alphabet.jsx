@@ -5,11 +5,10 @@ function Alphabet({ letter, accomplished, correctLetters }) {
   const [underscore, setUnderscore] = useState(alphString.replace(/[A-Z]/g, "_"));
   const [underscoreArray, setUnderscoreArray] = useState([]);
 
-  console.log(accomplished);
   useEffect(() => {
     let currentUnderscore = underscore;
     for (let i = 0; i < alphString.length; i++) {
-      if (alphString[i].toLowerCase() === letter.toLowerCase()) {
+      if (alphString[i].toLowerCase() === letter) {
         currentUnderscore = currentUnderscore.substring(0, i) + letter.toUpperCase() + currentUnderscore.substring(i + 1);
       }
     }
@@ -27,7 +26,7 @@ function Alphabet({ letter, accomplished, correctLetters }) {
     }
     setUnderscoreArray(tempArray);
   }, [letter, accomplished]);
-  console.log(alphString.substring(0, 1));
+
   return (
     <div className="alphabet">
       <div className="alphabet__wrapper">

@@ -43,10 +43,6 @@ main {
   flex-direction: column;
 }
 
-// .country {
-//   text-align: center;
-// }
-
 .container {
   display: flex;
   flex-direction: column;
@@ -58,4 +54,10 @@ main {
   .country {
     margin-top: 50px;
   }
+}
+
+.stats {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
