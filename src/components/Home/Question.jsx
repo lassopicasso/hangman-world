@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { api } from "../../constants/api";
 
-function Question({ setLetter, setAccomplished, correctLetters, setCorrectLetters, wrongLetters, setWrongLetters, attempts, setAttempts }) {
+function Question({ setLetter, setAccomplished, correctLetters, setCorrectLetters, attempts, setAttempts, displayLetter, setDisplayLetter }) {
   const [worldData, setWorldData] = useState();
   const [countryData, setCountryData] = useState();
   const [loading, setLoading] = useState(true);
   const [underscore, setUnderscore] = useState();
+  const [wrongLetters, setWrongLetters] = useState([]);
 
-  onkeydown = (event) => {
+  onkeyup = (event) => {
     setAccomplished(false);
     let currentLetter = event.key;
+    console.log(currentLetter);
     setLetter(event.key);
     const capital = countryData.capital;
     let matchedLetter = capital.match(currentLetter) || capital.toLowerCase().match(currentLetter.toLowerCase()) !== null;
-
     if (matchedLetter) {
       //Search through capital name if input letter can be found
       let currentUnderscore = underscore;
       for (let i = 0; i < capital.length; i++) {
-        console.log(currentLetter.match(/[a-z]/i));
         if (capital[i].toLowerCase() === currentLetter.toLowerCase()) {
           currentLetter = capital[i].toUpperCase() === capital[i] ? currentLetter.toUpperCase() : currentLetter.toLowerCase();
           currentUnderscore = currentUnderscore.substring(0, i) + currentLetter + currentUnderscore.substring(i + 1);
@@ -40,6 +40,7 @@ function Question({ setLetter, setAccomplished, correctLetters, setCorrectLetter
       setWrongLetters((oldLetters) => [...oldLetters, currentLetter]);
       setAttempts(attempts + 1);
     }
+    setDisplayLetter(false);
   };
 
   useEffect(() => {
@@ -63,6 +64,25 @@ function Question({ setLetter, setAccomplished, correctLetters, setCorrectLetter
       setUnderscore(countryData.capital.replace(/[a-z,A-Z]/g, "_"));
     }
   }, [countryData]);
+
+  useEffect(() => {
+    //Display the first hidden letter with a simulated keyboard event.
+    if (countryData && displayLetter) {
+      let char;
+      for (let i = 0; i < countryData.capital.length; i++) {
+        if (!correctLetters.match(countryData.capital[i].toLowerCase())) {
+          char = countryData.capital[i].toLowerCase();
+          break;
+        }
+      }
+      let evt = new KeyboardEvent("keyup", {
+        key: `${char}`,
+      });
+      window.dispatchEvent(evt);
+      setAttempts(attempts + 1);
+    }
+    // eslint-disable-next-line
+  }, [displayLetter]);
 
   if (loading) {
     return <main>Fetching World...</main>;

@@ -1,8 +1,9 @@
+#root,
 body {
   width: 100%;
-  // min-height: 100vh;
+  top: 0;
+  min-height: 100vh;
   margin: 0;
-  background-color: lightblue;
   font-size: 22px;
 }
 
@@ -49,7 +50,7 @@ main {
   align-items: center;
   text-align: center;
   justify-content: space-around;
-  height: calc(40vh);
+  height: calc(50vh);
   padding: 20px;
   .country {
     margin-top: 50px;
@@ -60,4 +61,8 @@ main {
   width: 100%;
   display: flex;
   justify-content: space-between;
+}
+
+body:focus-within {
+  background-color: red;
 }

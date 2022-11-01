@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-function Stats({ wrongLetters, accomplished, attempts }) {
+function Stats({ accomplished, attempts, setDisplayLetter }) {
   const [score, setScore] = useState(0);
   const [chances, setChances] = useState(5);
   const [failed, setFailed] = useState(false);
@@ -25,7 +25,7 @@ function Stats({ wrongLetters, accomplished, attempts }) {
         <div className="stats__gameOver">oh no!</div>
       ) : (
         <>
-          <button>Display first unknown letter (+1 attempt)</button>
+          <button onClick={() => setDisplayLetter(true)}>Display first unknown letter (+1 attempt)</button>
           <div>
             <div>
               Attempts {attempts} / {chances}

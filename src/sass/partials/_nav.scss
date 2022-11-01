@@ -1,0 +1,22 @@
+.nav {
+  max-width: 100%;
+  background-color: rgba(178, 222, 39, 0.8);
+  padding: 20px;
+  align-items: center;
+  &__container {
+    display: flex;
+    justify-content: space-around;
+  }
+  &__link,
+  &__link-active {
+    margin-left: 20px;
+    text-decoration: none;
+  }
+  &__link {
+    color: black;
+  }
+  &__link-active {
+    color: black;
+    font-weight: bold;
+  }
+}
