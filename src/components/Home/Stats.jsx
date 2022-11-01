@@ -13,7 +13,7 @@ function Stats({ wrongLetters, accomplished, attempts }) {
   }, [accomplished]);
 
   useEffect(() => {
-    if (attempts === chances) {
+    if (attempts > chances) {
       setFailed(true);
     }
   }, [attempts]);
