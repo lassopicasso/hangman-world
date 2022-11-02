@@ -11,6 +11,20 @@ main {
   margin: auto;
   width: 90%;
   max-width: 1200px;
+  text-align: center;
+  height: 100vh;
+}
+
+.start-game {
+  position: absolute;
+  background-color: white;
+  border-radius: 10px;
+  top: 50%;
+  left: 50%;
+  transition: 1.5s;
+  transform: translate(-50%, -50%);
+  width: 250px;
+  padding: 20px;
 }
 
 .country__capital,

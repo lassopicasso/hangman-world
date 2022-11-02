@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { api } from "../../constants/api";
 
-function Question({ setLetter, setAccomplished, correctLetters, setCorrectLetters, attempts, setAttempts, displayLetter, setDisplayLetter }) {
+function Question({ setLetter, setAccomplished, correctLetters, setCorrectLetters, attempts, setAttempts, displayLetter, setDisplayLetter, gameStarted }) {
   const [worldData, setWorldData] = useState();
   const [countryData, setCountryData] = useState();
   const [loading, setLoading] = useState(true);
@@ -9,38 +9,40 @@ function Question({ setLetter, setAccomplished, correctLetters, setCorrectLetter
   const [wrongLetters, setWrongLetters] = useState([]);
 
   onkeyup = (event) => {
-    setAccomplished(false);
-    let currentLetter = event.key;
-    console.log(currentLetter);
-    setLetter(event.key);
-    const capital = countryData.capital;
-    let matchedLetter = capital.match(currentLetter) || capital.toLowerCase().match(currentLetter.toLowerCase()) !== null;
-    if (matchedLetter) {
-      //Search through capital name if input letter can be found
-      let currentUnderscore = underscore;
-      for (let i = 0; i < capital.length; i++) {
-        if (capital[i].toLowerCase() === currentLetter.toLowerCase()) {
-          currentLetter = capital[i].toUpperCase() === capital[i] ? currentLetter.toUpperCase() : currentLetter.toLowerCase();
-          currentUnderscore = currentUnderscore.substring(0, i) + currentLetter + currentUnderscore.substring(i + 1);
-          setCorrectLetters(correctLetters + currentLetter.toLowerCase());
+    if (gameStarted) {
+      setAccomplished(false);
+      let currentLetter = event.key;
+      console.log(currentLetter);
+      setLetter(event.key);
+      const capital = countryData.capital;
+      let matchedLetter = capital.match(currentLetter) || capital.toLowerCase().match(currentLetter.toLowerCase()) !== null;
+      if (matchedLetter) {
+        //Search through capital name if input letter can be found
+        let currentUnderscore = underscore;
+        for (let i = 0; i < capital.length; i++) {
+          if (capital[i].toLowerCase() === currentLetter.toLowerCase()) {
+            currentLetter = capital[i].toUpperCase() === capital[i] ? currentLetter.toUpperCase() : currentLetter.toLowerCase();
+            currentUnderscore = currentUnderscore.substring(0, i) + currentLetter + currentUnderscore.substring(i + 1);
+            setCorrectLetters(correctLetters + currentLetter.toLowerCase());
+          }
+        }
+        //Check if user has found all the letters
+        if (currentUnderscore === countryData.capital) {
+          const country = worldData[Math.floor(Math.random() * worldData.length)];
+          setCountryData(country);
+          setAccomplished(true);
+          setWrongLetters([]);
+        } else {
+          setUnderscore(currentUnderscore);
         }
       }
-      //Check if user has found all the letters
-      if (currentUnderscore === countryData.capital) {
-        const country = worldData[Math.floor(Math.random() * worldData.length)];
-        setCountryData(country);
-        setAccomplished(true);
-        setWrongLetters([]);
-      } else {
-        setUnderscore(currentUnderscore);
+      //Is a letter, does not match, has a length of 1 (so that it doesn't accept keys such as "Tab" and isn't already used)
+      if (!matchedLetter && /^[a-zA-Z]+$/.test(currentLetter) && currentLetter.length === 1 && !wrongLetters.includes(currentLetter)) {
+        setWrongLetters((oldLetters) => [...oldLetters, currentLetter]);
+        setAttempts(attempts + 1);
       }
+      setDisplayLetter(false);
     }
-    //Is a letter, does not match, has a length of 1 (so that it doesn't accept keys such as "Tab" and isn't already used)
-    if (!matchedLetter && /^[a-zA-Z]+$/.test(currentLetter) && currentLetter.length === 1 && !wrongLetters.includes(currentLetter)) {
-      setWrongLetters((oldLetters) => [...oldLetters, currentLetter]);
-      setAttempts(attempts + 1);
-    }
-    setDisplayLetter(false);
   };
 
   useEffect(() => {
@@ -59,6 +61,7 @@ function Question({ setLetter, setAccomplished, correctLetters, setCorrectLetter
       }
     })();
   }, []);
+
   useEffect(() => {
     if (countryData) {
       setUnderscore(countryData.capital.replace(/[a-z,A-Z]/g, "_"));
@@ -67,6 +70,7 @@ function Question({ setLetter, setAccomplished, correctLetters, setCorrectLetter
 
   useEffect(() => {
     //Display the first hidden letter with a simulated keyboard event.
+    console.log(displayLetter);
     if (countryData && displayLetter) {
       let char;
       for (let i = 0; i < countryData.capital.length; i++) {
