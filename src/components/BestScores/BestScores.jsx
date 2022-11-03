@@ -16,13 +16,6 @@ function BestScores() {
           let sortedScores = data.data.sort((a, b) => b.attributes.score - a.attributes.score);
           console.log(sortedScores);
           setScores(sortedScores);
-          //   let sortedHotels = data.data
-          //     .map((hotel) => {
-          //       return { ...hotel, date: new Date(hotel.attributes.publishedAt) };
-          //     })
-          //     .sort((a, b) => b.date - a.date);
-          //   setHotels(sortedHotels);
-          //   setNewHotels(sortedHotels.slice(0, 4));
         }
       } catch (error) {
       } finally {

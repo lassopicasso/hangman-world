@@ -1,0 +1,36 @@
+.nav {
+  height: 25px;
+  &__container {
+    display: flex;
+    justify-content: space-around;
+  }
+  &__link,
+  &__link-active {
+    margin-left: 20px;
+    text-decoration: none;
+  }
+  &__link {
+    color: black;
+  }
+  &__link-active {
+    color: black;
+    font-weight: bold;
+  }
+}
+
+.nav,
+.footer {
+  height: 50px;
+  max-width: 100%;
+  background-color: rgba(178, 222, 39, 0.8);
+  align-items: center;
+
+  &__container {
+    display: flex;
+    height: 100%;
+    align-items: center;
+  }
+}
+.footer__container {
+  justify-content: center;
+}

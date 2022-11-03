@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 
-function Stats({ accomplished, attempts, setDisplayLetter, gameStarted }) {
+function Stats({ accomplished, attempts, setAttempts, setDisplayLetter, setGameFinished, gameStarted }) {
   const [score, setScore] = useState(0);
   const [chances, setChances] = useState(5);
-  const [failed, setFailed] = useState(false);
+
   useEffect(() => {
     if (accomplished === true) {
       setScore(score + 1);
@@ -12,31 +12,30 @@ function Stats({ accomplished, attempts, setDisplayLetter, gameStarted }) {
   }, [accomplished]);
 
   useEffect(() => {
+    if (gameStarted) {
+      setScore(0);
+      setChances(5);
+      setAttempts(0);
+    }
+  }, [gameStarted]);
+
+  useEffect(() => {
     if (attempts > chances) {
-      setFailed(true);
+      setGameFinished(true);
     }
   }, [attempts]);
 
-  function handleClick() {
-    if (gameStarted) {
-      setDisplayLetter(true);
-    }
-  }
   return (
     <div className="stats">
-      {failed ? (
-        <div className="stats__gameOver">oh no!</div>
-      ) : (
-        <>
-          <button onClick={handleClick}>Display first unknown letter (+1 attempt)</button>
-          <div>
-            <div>
-              Attempts {attempts} / {chances}
-            </div>
-            <div>Score: {score} </div>
-          </div>
-        </>
-      )}
+      <button className="cta" onClick={() => setDisplayLetter(true)}>
+        Display first unknown letter (+1 attempt)
+      </button>
+      <div>
+        <div>
+          Attempts {attempts} / {chances}
+        </div>
+        <div>Score: {score} </div>
+      </div>
     </div>
   );
 }

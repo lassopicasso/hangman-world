@@ -4,31 +4,90 @@ body {
   top: 0;
   min-height: 100vh;
   margin: 0;
-  font-size: 22px;
+  font-size: 18px;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  position: relative;
 }
 
 main {
   margin: auto;
   width: 90%;
+  height: 100%;
   max-width: 1200px;
   text-align: center;
-  height: 100vh;
+  position: relative;
 }
 
-.start-game {
-  position: absolute;
-  background-color: white;
-  border-radius: 10px;
-  top: 50%;
-  left: 50%;
-  transition: 1.5s;
-  transform: translate(-50%, -50%);
-  width: 250px;
-  padding: 20px;
+.welcome {
+  position: fixed;
+  inset: 50px 0 50px 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(1px);
+  &__wrapper {
+    position: absolute;
+    background-color: white;
+    border-radius: 10px;
+    top: 50%;
+    left: 50%;
+    transition: 0.5s ease-in-out;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    max-width: 90%;
+    padding: 20px;
+    box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.2);
+  }
+  &__message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  // &__message {
+  //   text-align: center;
+  //   span {
+  //     display: block;
+  //   }
+  // }
+  &__input {
+    label {
+      color: grey;
+      cursor: pointer;
+      transition: 0.5s;
+      &:hover {
+        color: black;
+      }
+    }
+    input {
+      display: block;
+      border-radius: 5px;
+      border: 1px solid black;
+      padding: 5px;
+    }
+    &:focus-within label {
+      color: black;
+    }
+  }
+  &__text {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    padding-bottom: 15px;
+    span {
+      display: block;
+    }
+  }
+  .username-error {
+    font-size: 16px;
+    color: red;
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
 }
 
-.country__capital,
-.country__capital--underscore,
+.question__capital,
+.question__capital--underscore,
 .alphabet {
   letter-spacing: 5px;
 }
@@ -58,19 +117,22 @@ main {
   flex-direction: column;
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  justify-content: space-around;
-  height: calc(50vh);
-  padding: 20px;
-  .country {
-    margin-top: 50px;
-  }
-}
+// .container {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   text-align: center;
+//   justify-content: space-around;
+//   height: calc(50vh);
+//   padding: 20px;
+// }
 
+.question {
+  transition: 1s ease-in-out;
+  margin-top: 50px;
+  font-size: 26px;
+  font-weight: bold;
+}
 .stats {
   width: 100%;
   display: flex;

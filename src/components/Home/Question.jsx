@@ -93,10 +93,10 @@ function Question({ setLetter, setAccomplished, correctLetters, setCorrectLetter
   }
 
   return (
-    <div className="country">
-      <div>{countryData.name}</div>
-      <div className="country__capital">{countryData.capital}</div>
-      <div className="country__capital">{underscore}</div>
+    <div className="question" style={{ opacity: gameStarted ? 1 : 0 }}>
+      <div>What is the capital of "{countryData.name}"?</div>
+      <div className="question__capital">{countryData.capital}</div>
+      <div className="question__capital">{underscore}</div>
     </div>
   );
 }
