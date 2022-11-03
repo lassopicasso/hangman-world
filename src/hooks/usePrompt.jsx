@@ -1,4 +1,5 @@
 /**
+ * Found this gem of a custom hook here: https://gist.github.com/MarksCode/64e438c82b0b2a1161e01c88ca0d0355
  * Prompts a user when they exit the page
  */
 
