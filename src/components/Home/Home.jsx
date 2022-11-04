@@ -53,7 +53,7 @@ function Home() {
       <Modal setGameStarted={setGameStarted} gameStarted={gameStarted} username={username} setUsername={setUsername} gameFinished={gameFinished} setGameFinished={setGameFinished} />
       <main>
         <Header type="first" content="Hangman World" />
-        <Alphabet letter={letter.toLowerCase()} accomplished={accomplished} correctLetters={correctLetters} setCorrectLetters={setCorrectLetters} />
+        <Alphabet letter={letter.toLowerCase()} accomplished={accomplished} correctLetters={correctLetters} setCorrectLetters={setCorrectLetters} gameStarted={gameStarted} />
         <Stats accomplished={accomplished} attempts={attempts} setAttempts={setAttempts} setDisplayLetter={setDisplayLetter} setGameFinished={setGameFinished} gameStarted={gameStarted} />
         <Question setLetter={setLetter} setAccomplished={setAccomplished} correctLetters={correctLetters} setCorrectLetters={setCorrectLetters} attempts={attempts} setAttempts={setAttempts} displayLetter={displayLetter} setDisplayLetter={setDisplayLetter} gameStarted={gameStarted} />
       </main>

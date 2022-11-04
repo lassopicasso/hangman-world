@@ -103,6 +103,8 @@ main {
 }
 .alphabet__displayed {
   letter-spacing: 5.5px;
+  transition: 2s;
+  // text-shadow: 0 0 3px black, 0 0 5px yellow;
 }
 
 .alphabet__success {

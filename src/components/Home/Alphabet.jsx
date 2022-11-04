@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 
-function Alphabet({ letter, accomplished, correctLetters, setCorrectLetters }) {
+function Alphabet({ letter, accomplished, correctLetters, setCorrectLetters, gameStarted }) {
   const alphString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   const [underscore, setUnderscore] = useState(alphString.replace(/[A-Z]/g, "_"));
   const [underscoreArray, setUnderscoreArray] = useState([]);
-
+  const [colorEffect, setColorEffect] = useState(false);
   useEffect(() => {
     let currentUnderscore = underscore;
     for (let i = 0; i < alphString.length; i++) {
@@ -27,6 +27,28 @@ function Alphabet({ letter, accomplished, correctLetters, setCorrectLetters }) {
     }
     setUnderscoreArray(tempArray);
   }, [letter, accomplished]);
+
+  useEffect(() => {
+    const hightlightAlph = document.querySelectorAll(".alphabet__displayed");
+    const chars = hightlightAlph.length;
+    let interval, interval1, interval2;
+    for (let i = 0; i < chars; i++) {
+      interval = setInterval(() => {
+        hightlightAlph[i].style.color = "#f2be22";
+      }, 2000);
+      interval1 = setInterval(() => {
+        hightlightAlph[i].style.color = "darkgreen";
+      }, 4000);
+      interval2 = setInterval(() => {
+        hightlightAlph[i].style.color = "black";
+      }, 3000);
+    }
+    return () => {
+      clearInterval(interval);
+      clearInterval(interval1);
+      clearInterval(interval2);
+    };
+  }, [gameStarted]);
 
   return (
     <div className="alphabet">
