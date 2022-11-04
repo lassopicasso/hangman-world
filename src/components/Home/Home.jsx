@@ -6,6 +6,7 @@ import Question from "./Question";
 import Stats from "./Stats";
 import { apiScores } from "../../constants/api";
 import { usePrompt } from "../../hooks/usePrompt";
+import { confetti } from "../../js/confetti";
 
 function Home() {
   const [letter, setLetter] = useState("");
@@ -21,6 +22,7 @@ function Home() {
   const [failedCountry, setFailedCountry] = useState();
   const [score, setScore] = useState(0);
   const [replacePosition, setReplacePosition] = useState(false);
+
   usePrompt("Are you sure you want to leave before your finish the game? Progress will be lost.", gameStarted);
   console.log(gameFinished);
   useEffect(() => {
@@ -55,7 +57,7 @@ function Home() {
   }, [gameFinished]);
 
   useEffect(() => {
-    console.log(replacePosition);
+    confetti(replacePosition);
     if (replacePosition) {
       const data = JSON.stringify({
         data: { name: username, score: score },
@@ -126,6 +128,8 @@ function Home() {
           <Alphabet letter={letter.toLowerCase()} accomplished={accomplished} correctLetters={correctLetters} setCorrectLetters={setCorrectLetters} gameStarted={gameStarted} />
         </div>
       </main>
+
+      <div id="confetti-wrapper"></div>
     </>
   );
 }
