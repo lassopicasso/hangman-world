@@ -17,9 +17,11 @@ function Home() {
   const [top10, setTop10] = useState([]);
   const [gameStarted, setGameStarted] = useState(false);
   const [gameFinished, setGameFinished] = useState(false);
-
+  const [countryData, setCountryData] = useState();
+  const [failedCountry, setFailedCountry] = useState();
+  const [score, setScore] = useState(0);
   usePrompt("Are you sure you want to leave before your finish the game? Progress will be lost.", gameStarted);
-
+  console.log(gameFinished);
   useEffect(() => {
     (async function fetchData() {
       try {
@@ -37,7 +39,6 @@ function Home() {
     // eslint-disable-next-line
   }, []);
 
-  console.log(top10);
   //Change color on body when focus/blur
   const body = document.querySelector("body");
   body.style.backgroundColor = "lightblue";
@@ -50,12 +51,37 @@ function Home() {
 
   return (
     <>
-      <Modal setGameStarted={setGameStarted} gameStarted={gameStarted} username={username} setUsername={setUsername} gameFinished={gameFinished} setGameFinished={setGameFinished} />
+      <Modal setGameStarted={setGameStarted} gameStarted={gameStarted} username={username} setUsername={setUsername} gameFinished={gameFinished} setGameFinished={setGameFinished} failedCountry={failedCountry} score={score} />
       <main>
         <Header type="first" content="Hangman World" />
         <Alphabet letter={letter.toLowerCase()} accomplished={accomplished} correctLetters={correctLetters} setCorrectLetters={setCorrectLetters} gameStarted={gameStarted} />
-        <Stats accomplished={accomplished} attempts={attempts} setAttempts={setAttempts} setDisplayLetter={setDisplayLetter} setGameFinished={setGameFinished} gameStarted={gameStarted} />
-        <Question setLetter={setLetter} setAccomplished={setAccomplished} correctLetters={correctLetters} setCorrectLetters={setCorrectLetters} attempts={attempts} setAttempts={setAttempts} displayLetter={displayLetter} setDisplayLetter={setDisplayLetter} gameStarted={gameStarted} />
+        <Stats
+          accomplished={accomplished}
+          attempts={attempts}
+          setAttempts={setAttempts}
+          setDisplayLetter={setDisplayLetter}
+          gameFinished={gameFinished}
+          setGameFinished={setGameFinished}
+          gameStarted={gameStarted}
+          setGameStarted={setGameStarted}
+          countryData={countryData}
+          setFailedCountry={setFailedCountry}
+          score={score}
+          setScore={setScore}
+        />
+        <Question
+          setLetter={setLetter}
+          setAccomplished={setAccomplished}
+          correctLetters={correctLetters}
+          setCorrectLetters={setCorrectLetters}
+          attempts={attempts}
+          setAttempts={setAttempts}
+          displayLetter={displayLetter}
+          setDisplayLetter={setDisplayLetter}
+          gameStarted={gameStarted}
+          countryData={countryData}
+          setCountryData={setCountryData}
+        />
       </main>
     </>
   );

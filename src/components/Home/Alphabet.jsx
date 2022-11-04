@@ -28,6 +28,7 @@ function Alphabet({ letter, accomplished, correctLetters, setCorrectLetters, gam
     setUnderscoreArray(tempArray);
   }, [letter, accomplished]);
 
+  //Some color effects on the alphabet when game started
   useEffect(() => {
     if (gameStarted) {
       const hightlightAlph = document.querySelectorAll(".alphabet__displayed");

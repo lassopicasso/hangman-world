@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-function Modal({ gameStarted, setGameStarted, username, setUsername, gameFinished, setGameFinished }) {
+function Modal({ gameStarted, setGameStarted, username, setUsername, gameFinished, setGameFinished, failedCountry, score }) {
   const [tooShort, setTooShort] = useState(false);
   const [tooLong, setTooLong] = useState(false);
 
@@ -10,14 +10,15 @@ function Modal({ gameStarted, setGameStarted, username, setUsername, gameFinishe
   }, []);
 
   useEffect(() => {
-    setGameStarted(false);
+    if (gameFinished) {
+      setGameStarted(false);
+    }
   }, [gameFinished]);
 
   function startGame() {
     if (!username) {
       const userInput = document.querySelector("#username");
       if (userInput.value.length > 2 && userInput.value.length < 16) {
-        console.log(gameStarted);
         setGameStarted(true);
         setGameFinished(false);
         setUsername(userInput.value);
@@ -31,19 +32,35 @@ function Modal({ gameStarted, setGameStarted, username, setUsername, gameFinishe
       }
     } else {
       setGameStarted(true);
-      setGameFinished(false);
     }
+    setGameFinished(false);
   }
+
   return (
     <div className="welcome" style={{ opacity: gameStarted ? 0 : 1, zIndex: gameStarted ? 0 : 10 }}>
       <div className="welcome__wrapper">
         <div className="welcome__message">
-          {username ? (
-            <div className="welcome__text">Ready for another game, {username}?</div>
+          {gameFinished && username ? (
+            <div className="welcome__text">
+              <p>
+                <span className="welcome__block">Ah.. You run out of attempts.</span>
+                <span className="welcome__block">
+                  The capital of <span className="welcome__bold">{failedCountry.name}</span> is <span className="welcome__bold">{failedCountry.capital}</span>
+                </span>
+                <span className="welcome__green welcome__bold">You got {score} correct!</span>
+                <span className="welcome__block"> Want to try again, {username}?</span>
+              </p>
+            </div>
+          ) : username ? (
+            <div className="welcome__text">
+              <p>Ready for another try, {username}?</p>
+            </div>
           ) : (
             <>
               <div className="welcome__text">
-                How many capitals do you know? <span>1 point for each correct.</span>
+                <p>
+                  How many capitals do you know? <span className="welcome__block">1 point for each correct.</span>
+                </p>
               </div>
               <div className="welcome__input">
                 <label htmlFor="username">Username</label>
@@ -53,10 +70,14 @@ function Modal({ gameStarted, setGameStarted, username, setUsername, gameFinishe
               </div>
             </>
           )}
-          <div className="welcome__cta">
-            {username && (
+
+          <button className="cta" onClick={startGame}>
+            {gameFinished ? "Try again!" : "Start game"}
+          </button>
+          {username && (
+            <div>
               <button
-                className="cta"
+                className="cta--small"
                 onClick={() => {
                   setUsername(false);
                   localStorage.setItem("username", JSON.stringify(false));
@@ -64,11 +85,8 @@ function Modal({ gameStarted, setGameStarted, username, setUsername, gameFinishe
               >
                 Change Username
               </button>
-            )}
-            <button className="cta" onClick={startGame}>
-              Start game
-            </button>
-          </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { api } from "../../constants/api";
 
-function Question({ setLetter, setAccomplished, correctLetters, setCorrectLetters, attempts, setAttempts, displayLetter, setDisplayLetter, gameStarted }) {
+function Question({ setLetter, setAccomplished, correctLetters, setCorrectLetters, attempts, setAttempts, displayLetter, setDisplayLetter, gameStarted, countryData, setCountryData }) {
   const [worldData, setWorldData] = useState();
-  const [countryData, setCountryData] = useState();
   const [loading, setLoading] = useState(true);
   const [underscore, setUnderscore] = useState();
   const [wrongLetters, setWrongLetters] = useState([]);
@@ -44,6 +43,15 @@ function Question({ setLetter, setAccomplished, correctLetters, setCorrectLetter
       setDisplayLetter(false);
     }
   };
+
+  useEffect(() => {
+    if (!gameStarted && worldData) {
+      const country = worldData[Math.floor(Math.random() * worldData.length)];
+      setCountryData(country);
+      setAccomplished(true);
+      setWrongLetters([]);
+    }
+  }, [gameStarted]);
 
   useEffect(() => {
     (async function fetchData() {

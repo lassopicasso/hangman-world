@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 
-function Stats({ accomplished, attempts, setAttempts, setDisplayLetter, setGameFinished, gameStarted }) {
-  const [score, setScore] = useState(0);
+function Stats({ accomplished, attempts, setAttempts, setDisplayLetter, gameFinished, setGameFinished, gameStarted, setGameStarted, setFailedCountry, countryData, score, setScore }) {
   const [chances, setChances] = useState(5);
 
   useEffect(() => {
-    if (accomplished === true) {
+    if (accomplished === true && !gameFinished) {
       setScore(score + 1);
       setChances(chances + 1);
     }
@@ -21,7 +20,9 @@ function Stats({ accomplished, attempts, setAttempts, setDisplayLetter, setGameF
 
   useEffect(() => {
     if (attempts > chances) {
+      setGameStarted(false);
       setGameFinished(true);
+      setFailedCountry(countryData);
     }
   }, [attempts]);
 
