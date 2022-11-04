@@ -7,7 +7,7 @@ function Nav() {
   return (
     <nav className="nav">
       <div className="nav__container">
-        <span className="nav__logo">Hangman World</span>
+        <span className="nav__logo">H-W</span>
         <div className="nav__links">
           <Link to="/" className={`nav__link${location === "/" ? "-active" : ""} `}>
             Home

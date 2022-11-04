@@ -1,11 +1,19 @@
 .nav {
-  height: 25px;
   font-size: 22px;
+  &__logo {
+    font-size: 26px;
+    letter-spacing: 3px;
+    margin-top: -5px;
+    color: #0423ac;
+    font-weight: bold;
+    filter: drop-shadow(0px 8px 6px #000000);
+  }
   &__container {
     display: flex;
     margin: auto;
     justify-content: space-around;
     width: 90%;
+    height: 50px;
     max-width: 1100px;
   }
   &__link,
@@ -18,16 +26,23 @@
     color: black;
   }
   &__link-active {
-    color: black;
+    color: #0423ac;
     font-weight: bold;
   }
+}
+
+.nav {
+  background: linear-gradient(rgb(178, 222, 39), rgb(178, 222, 39), rgb(178, 222, 39), rgba(178, 222, 39, 60%), rgba(178, 222, 39, 50%), rgb(178, 222, 39, 20%));
+}
+
+.footer {
+  background: linear-gradient(to top, rgb(178, 222, 39), rgb(178, 222, 39), rgb(178, 222, 39), rgba(178, 222, 39, 60%), rgba(178, 222, 39, 50%), rgb(178, 222, 39, 20%));
 }
 
 .nav,
 .footer {
   height: 50px;
   max-width: 100%;
-  background-color: rgba(178, 222, 39, 0.8);
   align-items: center;
 
   &__container {
