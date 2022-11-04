@@ -30,7 +30,7 @@ function Stats({ accomplished, attempts, setAttempts, setDisplayLetter, gameFini
   }, [attempts]);
 
   return (
-    <div className="stats">
+    <div className="stats game__block">
       <button className="cta cta-letter" onClick={() => setDisplayLetter(true)}>
         Display letter (+1 attempt)
       </button>

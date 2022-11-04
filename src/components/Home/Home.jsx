@@ -95,7 +95,7 @@ function Home() {
       <Modal setGameStarted={setGameStarted} gameStarted={gameStarted} username={username} setUsername={setUsername} gameFinished={gameFinished} setGameFinished={setGameFinished} failedCountry={failedCountry} score={score} replacePosition={replacePosition} setReplacePosition={setReplacePosition} />
       <main>
         <Header type="first" content="Hangman World" />
-        <div>
+        <div className="game">
           <Stats
             accomplished={accomplished}
             attempts={attempts}
@@ -110,8 +110,6 @@ function Home() {
             score={score}
             setScore={setScore}
           />
-          <Alphabet letter={letter.toLowerCase()} accomplished={accomplished} correctLetters={correctLetters} setCorrectLetters={setCorrectLetters} gameStarted={gameStarted} />
-
           <Question
             setLetter={setLetter}
             setAccomplished={setAccomplished}
@@ -125,6 +123,7 @@ function Home() {
             countryData={countryData}
             setCountryData={setCountryData}
           />
+          <Alphabet letter={letter.toLowerCase()} accomplished={accomplished} correctLetters={correctLetters} setCorrectLetters={setCorrectLetters} gameStarted={gameStarted} />
         </div>
       </main>
     </>

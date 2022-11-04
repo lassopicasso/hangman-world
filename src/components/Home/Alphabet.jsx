@@ -68,7 +68,7 @@ function Alphabet({ letter, accomplished, correctLetters, setCorrectLetters, gam
   }
 
   return (
-    <div className="alphabet">
+    <div className="alphabet game__block">
       <div className="alphabet__wrapper">
         {underscoreArray.map((char, index) => {
           return (

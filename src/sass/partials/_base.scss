@@ -140,25 +140,15 @@ h1 {
   font-size: 22px;
 }
 
-// .container {
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   text-align: center;
-//   justify-content: space-around;
-//   height: calc(50vh);
-//   padding: 20px;
-// }
-
 .question {
   transition: 1s ease-in-out;
-  margin-top: 50px;
   font-size: 26px;
   font-weight: bold;
 }
 .stats {
   width: 100%;
   display: flex;
+  align-items: center;
   justify-content: space-between;
   &__number {
     display: flex;
@@ -176,6 +166,19 @@ body:focus-within {
   background-color: red;
 }
 
+.game {
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  .question,
+  .alphabet {
+    flex: 1;
+  }
+  .stats {
+    flex: 0.5;
+  }
+}
+
 @media screen and (max-width: 400px) {
   main {
     width: 95%;
@@ -187,4 +190,25 @@ body:focus-within {
     flex-direction: column-reverse;
     align-items: center;
   }
+
+  .game .question {
+    flex: 0.5;
+  }
+  .game__block {
+    margin-bottom: 20px;
+  }
+  // .game {
+  //   display: flex;
+  //   flex-direction: column;
+  //   justify-content: center;
+  //   & div:nth-child(1) {
+  //     order: 1;
+  //   }
+  //   & div:nth-child(2) {
+  //     order: 3;
+  //   }
+  //   & div:nth-child(3) {
+  //     order: 2;
+  //   }
+  // }
 }
