@@ -49,8 +49,8 @@ function Modal({ gameStarted, setGameStarted, username, setUsername, gameFinishe
                 <span className="welcome__block">
                   The capital of <span className="welcome__bold">{failedCountry.name}</span> is <span className="welcome__bold">{failedCountry.capital}</span>
                 </span>
-                <span className="welcome__green welcome__bold">
-                  You got {score} correct! {replacePosition ? `And you made it into top 10! You got the number ${replacePosition.position} best score, congratz!` : "fefe"}
+                <span className="welcome__bold">
+                  <span className="welcome__green welcome__block"> You got {score} correct! </span> {replacePosition ? `And you made it into top 10 at ${replacePosition.position}th place!` : "fefe"}
                 </span>
                 <span className="welcome__block"> Want to try again, {username}?</span>
               </p>
