@@ -10,7 +10,6 @@ body {
   grid-template-rows: auto 1fr auto;
   position: relative;
   font-family: "Playfair Display";
-  overflow: hidden;
 }
 
 main {
@@ -19,13 +18,14 @@ main {
   max-width: 1000px;
   text-align: center;
   position: relative;
+  overflow: hidden;
 }
 
 h1 {
   margin: 20px;
 }
 .welcome {
-  position: fixed;
+  position: absolute;
   inset: 50px 0 50px 0;
   background-color: rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(1px);
@@ -212,6 +212,9 @@ body:focus-within {
 @media screen and (max-width: 400px) {
   main {
     width: 95%;
+  }
+  .welcome__wrapper {
+    width: 85%;
   }
 }
 
