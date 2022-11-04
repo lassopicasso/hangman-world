@@ -27,10 +27,16 @@ function Question({ setLetter, setAccomplished, correctLetters, setCorrectLetter
         }
         //Check if user has found all the letters
         if (currentUnderscore === countryData.capital) {
-          const country = worldData[Math.floor(Math.random() * worldData.length)];
-          setCountryData(country);
-          setAccomplished(true);
-          setWrongLetters([]);
+          setUnderscore(currentUnderscore);
+          let highLightEl = document.querySelectorAll(".question__capital")[1];
+          highLightEl.style.color = "green";
+          setTimeout(() => {
+            highLightEl.style.color = "black";
+            const country = worldData[Math.floor(Math.random() * worldData.length)];
+            setCountryData(country);
+            setAccomplished(true);
+            setWrongLetters([]);
+          }, 300);
         } else {
           setUnderscore(currentUnderscore);
         }
