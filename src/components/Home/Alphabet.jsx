@@ -29,25 +29,31 @@ function Alphabet({ letter, accomplished, correctLetters, setCorrectLetters, gam
   }, [letter, accomplished]);
 
   useEffect(() => {
-    const hightlightAlph = document.querySelectorAll(".alphabet__displayed");
-    const chars = hightlightAlph.length;
-    let interval, interval1, interval2;
-    for (let i = 0; i < chars; i++) {
-      interval = setInterval(() => {
-        hightlightAlph[i].style.color = "#f2be22";
-      }, 2000);
-      interval1 = setInterval(() => {
-        hightlightAlph[i].style.color = "darkgreen";
-      }, 4000);
-      interval2 = setInterval(() => {
-        hightlightAlph[i].style.color = "black";
-      }, 3000);
+    if (gameStarted) {
+      const hightlightAlph = document.querySelectorAll(".alphabet__displayed");
+      const chars = hightlightAlph.length;
+      let interval, interval1, interval2, interval3, interval4;
+      for (let i = 0; i < chars; i++) {
+        setTimeout(() => {
+          interval = setInterval(() => {
+            hightlightAlph[i].style.color = "darkblue";
+          }, 1000);
+          interval1 = setInterval(() => {
+            hightlightAlph[i].style.color = "darkgreen";
+          }, 2000);
+          interval2 = setInterval(() => {
+            hightlightAlph[i].style.color = "#FF8C00";
+          }, 3000);
+          interval3 = setInterval(() => {
+            hightlightAlph[i].style.color = "purple";
+          }, 4000);
+          interval4 = setInterval(() => {
+            hightlightAlph[i].style.color = "black";
+          }, 5000);
+        }, i * 300);
+      }
+      return () => clearInterval(interval, interval1, interval2, interval3, interval4);
     }
-    return () => {
-      clearInterval(interval);
-      clearInterval(interval1);
-      clearInterval(interval2);
-    };
   }, [gameStarted]);
 
   return (
