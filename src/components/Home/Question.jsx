@@ -51,6 +51,7 @@ function Question({ setLetter, setAccomplished, correctLetters, setCorrectLetter
       setAccomplished(true);
       setWrongLetters([]);
     }
+    // eslint-disable-next-line
   }, [gameStarted]);
 
   useEffect(() => {
@@ -68,6 +69,7 @@ function Question({ setLetter, setAccomplished, correctLetters, setCorrectLetter
         setLoading(false);
       }
     })();
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {

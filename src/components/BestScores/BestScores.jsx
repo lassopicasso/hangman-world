@@ -35,10 +35,15 @@ function BestScores() {
       ) : (
         <div className="table">
           {scores.map((score, index) => {
+            let ordinalNumber = index === 0 ? "st" : index === 1 ? "nd" : index === 2 ? "rd" : "th";
+            console.log(ordinalNumber);
             return (
               <div className="table__element" key={index}>
-                <div>Position {index + 1} </div>
                 <div>{score.attributes.name} </div>
+                <div>
+                  {index + 1}
+                  {ordinalNumber}
+                </div>
                 <div>{score.attributes.score} points </div>
               </div>
             );

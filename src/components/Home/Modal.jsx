@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-function Modal({ gameStarted, setGameStarted, username, setUsername, gameFinished, setGameFinished, failedCountry, score }) {
+function Modal({ gameStarted, setGameStarted, username, setUsername, gameFinished, setGameFinished, failedCountry, score, replacePosition, setReplacePosition }) {
   const [tooShort, setTooShort] = useState(false);
   const [tooLong, setTooLong] = useState(false);
 
@@ -13,9 +13,11 @@ function Modal({ gameStarted, setGameStarted, username, setUsername, gameFinishe
     if (gameFinished) {
       setGameStarted(false);
     }
+    // eslint-disable-next-line
   }, [gameFinished]);
 
   function startGame() {
+    setReplacePosition(false);
     if (!username) {
       const userInput = document.querySelector("#username");
       if (userInput.value.length > 2 && userInput.value.length < 16) {
@@ -43,11 +45,13 @@ function Modal({ gameStarted, setGameStarted, username, setUsername, gameFinishe
           {gameFinished && username ? (
             <div className="welcome__text">
               <p>
-                <span className="welcome__block">Ah.. You run out of attempts.</span>
+                <span className="welcome__block">Oh no! You ran out of attempts.</span>
                 <span className="welcome__block">
                   The capital of <span className="welcome__bold">{failedCountry.name}</span> is <span className="welcome__bold">{failedCountry.capital}</span>
                 </span>
-                <span className="welcome__green welcome__bold">You got {score} correct!</span>
+                <span className="welcome__green welcome__bold">
+                  You got {score} correct! {replacePosition ? `And you made it into top 10! You got the number ${replacePosition.position} best score, congratz!` : "fefe"}
+                </span>
                 <span className="welcome__block"> Want to try again, {username}?</span>
               </p>
             </div>

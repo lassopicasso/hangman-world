@@ -10,6 +10,7 @@ body {
   -ms-grid-rows: auto 1fr auto;
       grid-template-rows: auto 1fr auto;
   position: relative;
+  font-family: "Playfair Display";
 }
 
 main {
@@ -42,19 +43,20 @@ main {
   width: 400px;
   max-width: 90%;
   padding: 20px;
+  -webkit-box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.2);
 }
 
 .welcome__message {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 1fr;
+      grid-template-rows: 1fr;
+  gap: 15px;
+}
+
+.welcome__input {
+  margin: auto;
 }
 
 .welcome__input label {
@@ -80,14 +82,29 @@ main {
 }
 
 .welcome__text {
+  font-size: 20px;
   width: 100%;
   max-width: 400px;
+  line-height: 1.5;
   text-align: center;
-  padding-bottom: 15px;
 }
 
-.welcome__text span {
+.welcome__text p {
+  margin: 0;
+}
+
+.welcome__text .welcome__block {
   display: block;
+}
+
+.welcome__text .welcome__bold {
+  font-weight: bold;
+}
+
+.welcome__text .welcome__green {
+  font-size: 22px;
+  color: green;
+  text-shadow: 1px 3px 3px rgba(242, 190, 34, 0.5);
 }
 
 .welcome .username-error {
@@ -122,6 +139,9 @@ main {
 
 .alphabet__displayed {
   letter-spacing: 5.5px;
+  -webkit-transition: 2s;
+  transition: 2s;
+  font-weight: bold;
 }
 
 .alphabet__success {
@@ -140,6 +160,7 @@ main {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  font-size: 22px;
 }
 
 .question {
@@ -166,6 +187,7 @@ body:focus-within {
 
 .nav {
   height: 25px;
+  font-size: 22px;
 }
 
 .nav__container {
@@ -177,6 +199,7 @@ body:focus-within {
 }
 
 .nav__link, .nav__link-active {
+  font-family: "Bebas Neue";
   margin-left: 20px;
   text-decoration: none;
 }
@@ -236,5 +259,50 @@ body:focus-within {
 
 .table__element:not(:last-child) {
   border-bottom: 1px solid black;
+}
+
+.cta {
+  border-radius: 10px;
+  border: none;
+  padding: 7px 20px;
+  min-width: 150px;
+  max-width: 250px;
+  -webkit-box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.2);
+  font-size: 20px;
+  background-color: lightgreen;
+  font-family: "Bebas Neue";
+  outline: none;
+  cursor: pointer;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.cta:hover {
+  color: white;
+  background-color: green;
+}
+
+.cta--small {
+  font-family: "Playful Display";
+  display: block;
+  border: none;
+  background: none;
+  text-decoration: underline;
+  color: grey;
+  font-size: 16px;
+  cursor: pointer;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  margin-top: 5px;
+}
+
+.cta--small:hover {
+  color: black;
+}
+
+.welcome .cta {
+  width: 100%;
+  margin: auto;
 }
 /*# sourceMappingURL=style.css.map */

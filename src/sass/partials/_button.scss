@@ -1,13 +1,13 @@
 .cta {
   border-radius: 10px;
   border: none;
-  padding: 7px 20px;
+  padding: 5px 20px !important;
   min-width: 150px;
   max-width: 250px;
   box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.2);
-  font-size: 18px;
+  font-size: 20px;
   background-color: lightgreen;
-  font-weight: bold;
+  font-family: "Bebas Neue";
   outline: none;
   cursor: pointer;
   transition: 0.5s;
@@ -16,7 +16,10 @@
     background-color: green;
   }
 }
-
+.cta-letter {
+  font-size: 18px;
+  margin: 5px;
+}
 .cta--small {
   font-family: "Playful Display";
   display: block;

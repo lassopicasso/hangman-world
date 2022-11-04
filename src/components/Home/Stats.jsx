@@ -8,6 +8,7 @@ function Stats({ accomplished, attempts, setAttempts, setDisplayLetter, gameFini
       setScore(score + 1);
       setChances(chances + 1);
     }
+    // eslint-disable-next-line
   }, [accomplished]);
 
   useEffect(() => {
@@ -16,6 +17,7 @@ function Stats({ accomplished, attempts, setAttempts, setDisplayLetter, gameFini
       setChances(5);
       setAttempts(0);
     }
+    // eslint-disable-next-line
   }, [gameStarted]);
 
   useEffect(() => {
@@ -24,16 +26,17 @@ function Stats({ accomplished, attempts, setAttempts, setDisplayLetter, gameFini
       setGameFinished(true);
       setFailedCountry(countryData);
     }
+    // eslint-disable-next-line
   }, [attempts]);
 
   return (
     <div className="stats">
-      <button className="cta" onClick={() => setDisplayLetter(true)}>
-        Display first unknown letter (+1 attempt)
+      <button className="cta cta-letter" onClick={() => setDisplayLetter(true)}>
+        Display letter (+1 attempt)
       </button>
-      <div>
+      <div className="stats__number">
         <div>
-          Attempts {attempts} / {chances}
+          Attempts: {attempts} / {chances}
         </div>
         <div>Score: {score} </div>
       </div>

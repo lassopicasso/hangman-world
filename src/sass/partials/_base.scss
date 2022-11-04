@@ -12,14 +12,16 @@ body {
 }
 
 main {
-  margin: auto;
+  margin: 20px auto;
   width: 90%;
-  height: 100%;
   max-width: 1200px;
   text-align: center;
   position: relative;
 }
 
+h1 {
+  margin: 0;
+}
 .welcome {
   position: fixed;
   inset: 50px 0 50px 0;
@@ -114,6 +116,13 @@ main {
   letter-spacing: 5.5px;
   transition: 2s;
   font-weight: bold;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.2);
+    font-weight: bold;
+    color: white !important;
+    text-shadow: 0 0 3px black, 0 0 5px black;
+  }
   // text-shadow: 0 0 3px black, 0 0 5px yellow;
 }
 
@@ -127,6 +136,7 @@ main {
 .alphabet__letter {
   display: flex;
   flex-direction: column;
+  margin-left: 3px !important;
   font-size: 22px;
 }
 
@@ -150,8 +160,31 @@ main {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  &__number {
+    display: flex;
+    align-items: center;
+    > * {
+      margin: 5px;
+      padding: 10px;
+      background-color: rgba(255, 255, 255, 0.6);
+      border-radius: 10px;
+    }
+  }
 }
 
 body:focus-within {
   background-color: red;
+}
+
+@media screen and (max-width: 400px) {
+  main {
+    width: 95%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .stats {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
 }

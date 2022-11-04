@@ -4,7 +4,7 @@ function Alphabet({ letter, accomplished, correctLetters, setCorrectLetters, gam
   const alphString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   const [underscore, setUnderscore] = useState(alphString.replace(/[A-Z]/g, "_"));
   const [underscoreArray, setUnderscoreArray] = useState([]);
-  const [colorEffect, setColorEffect] = useState(false);
+
   useEffect(() => {
     let currentUnderscore = underscore;
     for (let i = 0; i < alphString.length; i++) {
@@ -26,6 +26,7 @@ function Alphabet({ letter, accomplished, correctLetters, setCorrectLetters, gam
       }
     }
     setUnderscoreArray(tempArray);
+    // eslint-disable-next-line
   }, [letter, accomplished]);
 
   //Some color effects on the alphabet when game started
@@ -35,6 +36,7 @@ function Alphabet({ letter, accomplished, correctLetters, setCorrectLetters, gam
       const chars = hightlightAlph.length;
       let interval, interval1, interval2, interval3, interval4;
       for (let i = 0; i < chars; i++) {
+        // eslint-disable-next-line
         setTimeout(() => {
           interval = setInterval(() => {
             hightlightAlph[i].style.color = "darkblue";
@@ -57,6 +59,14 @@ function Alphabet({ letter, accomplished, correctLetters, setCorrectLetters, gam
     }
   }, [gameStarted]);
 
+  function clickOnLetter(event) {
+    const letter = event.target.innerText;
+    let evt = new KeyboardEvent("keyup", {
+      key: `${letter}`,
+    });
+    window.dispatchEvent(evt);
+  }
+
   return (
     <div className="alphabet">
       <div className="alphabet__wrapper">
@@ -64,7 +74,9 @@ function Alphabet({ letter, accomplished, correctLetters, setCorrectLetters, gam
           return (
             <span className="alphabet__letter" key={index}>
               <span className={`alphabet__underscore ${correctLetters.match(char.toLowerCase()) ? "alphabet__success" : char !== "_" ? "alphabet__failure" : ""}`}>{char}</span>
-              <span className="alphabet__displayed">{alphString.substring(index, index + 1)}</span>
+              <span className="alphabet__displayed" onClick={(event) => clickOnLetter(event)}>
+                {alphString.substring(index, index + 1)}
+              </span>
             </span>
           );
         })}
