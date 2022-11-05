@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { statsReaction } from "../../js/common";
 
 function Stats({ accomplished, attempts, setAttempts, setDisplayLetter, gameFinished, setGameFinished, gameStarted, setGameStarted, setFailedCountry, countryData, score, setScore }) {
-  const [chances, setChances] = useState(5);
+  const [chances, setChances] = useState(8);
 
   useEffect(() => {
     if (accomplished === true && !gameFinished) {
@@ -16,7 +16,7 @@ function Stats({ accomplished, attempts, setAttempts, setDisplayLetter, gameFini
   useEffect(() => {
     if (gameStarted) {
       setScore(0);
-      setChances(5);
+      setChances(8);
       setAttempts(0);
     }
     // eslint-disable-next-line

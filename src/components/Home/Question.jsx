@@ -28,7 +28,7 @@ function Question({ setLetter, setAccomplished, correctLetters, setCorrectLetter
         //Check if user has found all the letters
         if (currentUnderscore === countryData.capital) {
           setUnderscore(currentUnderscore);
-          let highLightEl = document.querySelectorAll(".question__capital")[1];
+          let highLightEl = document.querySelector(".question__capital");
           highLightEl.style.color = "green";
           setTimeout(() => {
             highLightEl.style.color = "black";
