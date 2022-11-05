@@ -82,7 +82,7 @@ function Home() {
     // eslint-disable-next-line
   }, [replacePosition]);
 
-  //Change color on body when focus/blur
+  //Change color on body when focus/blur (gives player a notice if keyboard is active or not, when a key is pressed)
   const body = document.querySelector("body");
   body.style.backgroundColor = "lightblue";
   window.addEventListener("focus", () => {
