@@ -1,6 +1,7 @@
 # Hangman World
 
 Hangman game that tests the player's geography skills. Will the player make it into top 10? 
+
 [Website](https://hangman-world.netlify.app/)
 
 ## Description
