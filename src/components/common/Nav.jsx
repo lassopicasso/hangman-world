@@ -8,11 +8,11 @@ function Nav() {
     <nav className="nav">
       <div className="nav__container">
         <Link to="/" className="nav__logo">
-          H-W
+          HW
         </Link>
         <div className="nav__links">
           <Link to="/" className={`nav__link${location === "/" ? "-active" : ""} `}>
-            Home
+            Game
           </Link>
           <Link to="/top10" className={`nav__link${location === "/top10" ? "-active" : ""} `}>
             Top 10

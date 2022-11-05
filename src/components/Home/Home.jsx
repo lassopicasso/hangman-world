@@ -126,6 +126,7 @@ function Home() {
           />
           <Question
             setLetter={setLetter}
+            accomplished={accomplished}
             setAccomplished={setAccomplished}
             correctLetters={correctLetters}
             setCorrectLetters={setCorrectLetters}
@@ -139,8 +140,8 @@ function Home() {
           />
           <Alphabet letter={letter.toLowerCase()} accomplished={accomplished} correctLetters={correctLetters} setCorrectLetters={setCorrectLetters} gameStarted={gameStarted} />
         </div>
-        <div id="confetti-wrapper"></div>
       </main>
+      <div id="confetti-wrapper"></div>
     </>
   );
 }

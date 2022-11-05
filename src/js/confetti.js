@@ -35,5 +35,6 @@ export function confetti(replacePosition) {
     }
   } else {
     document.getElementById("confetti-wrapper").innerHTML = "";
+    document.getElementById("confetti-wrapper").style.zIndex = "-5";
   }
 }

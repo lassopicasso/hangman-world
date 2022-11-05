@@ -80,10 +80,10 @@ function Modal({ gameStarted, setGameStarted, username, setUsername, gameFinishe
               </div>
             </>
           )}
-          <span className="welcome__info">Click letter or press key when on desktop, else click letter</span>
           <button className="cta" onClick={startGame}>
             {gameFinished ? "Try again!" : "Start game"}
           </button>
+          <span className="welcome__info">Game tip: press a key when on desktop, else click on letters</span>
           {username && (
             <div>
               <button
@@ -97,7 +97,7 @@ function Modal({ gameStarted, setGameStarted, username, setUsername, gameFinishe
               </button>
             </div>
           )}
-        </div>
+        </div>{" "}
       </div>
     </div>
   );

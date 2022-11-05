@@ -1,0 +1,85 @@
+.welcome {
+  position: absolute;
+  inset: 50px 0 50px 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(1px);
+  &__info {
+    font-size: 14px;
+    color: grey;
+    text-align: center;
+    margin: -10px auto 0 auto;
+  }
+  &__wrapper {
+    position: absolute;
+    background-color: white;
+    border-radius: 10px;
+    top: 50%;
+    left: 50%;
+    transition: 0.5s ease-in-out;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    max-width: 90%;
+    padding: 20px;
+    box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.2);
+  }
+  &__message {
+    display: grid;
+    grid-template-rows: 1fr;
+    gap: 15px;
+    // align-items: center;
+  }
+
+  &__input {
+    margin: auto;
+    label {
+      color: grey;
+      cursor: pointer;
+      transition: 0.5s;
+      &:hover {
+        color: black;
+      }
+    }
+    input {
+      font-family: "Playfair Display";
+      font-size: 16px;
+      display: block;
+      border-radius: 5px;
+      border: 1px solid black;
+      padding: 5px;
+    }
+    &:focus-within label {
+      color: black;
+    }
+  }
+  &__text {
+    font-size: 20px;
+    width: 100%;
+    max-width: 400px;
+    line-height: 1.5;
+    text-align: center;
+    p {
+      margin: 0;
+    }
+    .welcome__block {
+      display: block;
+    }
+    .welcome__bold {
+      font-weight: bold;
+    }
+    .welcome__green {
+      font-size: 22px;
+      color: green;
+      text-shadow: 1px 3px 3px rgba(242, 190, 34, 0.5);
+    }
+    .welcome__question {
+      margin: 7px;
+    }
+  }
+  .username-error {
+    font-size: 16px;
+    color: red;
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
+}

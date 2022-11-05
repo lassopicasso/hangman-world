@@ -1,0 +1,32 @@
+@media screen and (max-width: 400px) {
+  main {
+    width: 98%;
+  }
+  .welcome__wrapper {
+    width: 85%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  h1 {
+    font-size: 32px;
+    margin-top: 10px;
+  }
+  .stats {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .game {
+    height: 92%;
+  }
+  .game .question {
+    flex: 0.5;
+  }
+  .game__block {
+    margin-bottom: 20px;
+  }
+  .alphabet {
+    margin-bottom: 10px;
+  }
+}
