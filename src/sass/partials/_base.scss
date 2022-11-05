@@ -29,6 +29,12 @@ h1 {
   inset: 50px 0 50px 0;
   background-color: rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(1px);
+  &__info {
+    font-size: 14px;
+    color: grey;
+    text-align: center;
+    margin: -20px auto 0 auto;
+  }
   &__wrapper {
     position: absolute;
     background-color: white;
