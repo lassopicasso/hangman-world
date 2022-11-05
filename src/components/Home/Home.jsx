@@ -94,7 +94,19 @@ function Home() {
 
   return (
     <>
-      <Modal setGameStarted={setGameStarted} gameStarted={gameStarted} username={username} setUsername={setUsername} gameFinished={gameFinished} setGameFinished={setGameFinished} failedCountry={failedCountry} score={score} replacePosition={replacePosition} setReplacePosition={setReplacePosition} />
+      <Modal
+        setGameStarted={setGameStarted}
+        gameStarted={gameStarted}
+        username={username}
+        setUsername={setUsername}
+        gameFinished={gameFinished}
+        setGameFinished={setGameFinished}
+        failedCountry={failedCountry}
+        score={score}
+        replacePosition={replacePosition}
+        setReplacePosition={setReplacePosition}
+        top10={top10}
+      />
       <main>
         <Header type="first" content="Hangman World" />
         <div className="game">

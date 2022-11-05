@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-function Modal({ gameStarted, setGameStarted, username, setUsername, gameFinished, setGameFinished, failedCountry, score, replacePosition, setReplacePosition }) {
+function Modal({ gameStarted, setGameStarted, username, setUsername, gameFinished, setGameFinished, failedCountry, score, replacePosition, setReplacePosition, top10 }) {
   const [tooShort, setTooShort] = useState(false);
   const [tooLong, setTooLong] = useState(false);
 
@@ -45,14 +45,20 @@ function Modal({ gameStarted, setGameStarted, username, setUsername, gameFinishe
           {gameFinished && username ? (
             <div className="welcome__text">
               <p>
-                <span className="welcome__block">Oh no! You ran out of attempts.</span>
+                <span className="welcome__block">
+                  {replacePosition ? "Well done!" : "Ups!"} You ran out of attempts{replacePosition ? ", but did good!" : "."}
+                </span>
                 <span className="welcome__block">
                   The capital of <span className="welcome__bold">{failedCountry.name}</span> is <span className="welcome__bold">{failedCountry.capital}</span>
                 </span>
                 <span className="welcome__bold">
-                  <span className="welcome__green welcome__block"> You got {score} correct! </span> {replacePosition ? `And you made it into top 10 at ${replacePosition.position}th place!` : "fefe"}
+                  <span className="welcome__green welcome__block" style={{ color: score === 0 ? "red" : "green" }}>
+                    {" "}
+                    You got {score} correct!{" "}
+                  </span>{" "}
+                  {replacePosition ? `And you made it into top 10 at ${replacePosition.position}th place! Well done!` : `Only ${Math.min(...top10.map((item) => item.attributes.score)) - score + 1} points to 10th place.`}
                 </span>
-                <span className="welcome__block"> Want to try again, {username}?</span>
+                <span className="welcome__block welcome__question"> Want to try again, {username}?</span>
               </p>
             </div>
           ) : username ? (

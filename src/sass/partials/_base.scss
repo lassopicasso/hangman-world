@@ -89,6 +89,9 @@ h1 {
       color: green;
       text-shadow: 1px 3px 3px rgba(242, 190, 34, 0.5);
     }
+    .welcome__question {
+      margin: 7px;
+    }
   }
   .username-error {
     font-size: 16px;
@@ -152,6 +155,7 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  overflow: hidden;
   &__number {
     display: flex;
     align-items: center;
@@ -160,6 +164,9 @@ h1 {
       padding: 10px;
       background-color: rgba(255, 255, 255, 0.6);
       border-radius: 10px;
+    }
+    &:hover {
+      cursor: default;
     }
   }
 }
