@@ -28,7 +28,7 @@ To install and run this project locally, you can do the following:
 git clone https://github.com/lassopicasso/hangman-world.git
 ```
 
-2. 2. Install the dependencies:
+2. Install the dependencies:
 
 ```
 npm install
