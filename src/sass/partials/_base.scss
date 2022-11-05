@@ -187,7 +187,7 @@ body:focus-within {
 }
 
 .game {
-  height: 90%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   .question,
@@ -239,17 +239,23 @@ body:focus-within {
 @media screen and (max-width: 500px) {
   h1 {
     font-size: 32px;
-    margin: 10px;
+    margin-top: 10px;
   }
   .stats {
     flex-direction: column-reverse;
     align-items: center;
   }
 
+  .game {
+    height: 92%;
+  }
   .game .question {
     flex: 0.5;
   }
   .game__block {
     margin-bottom: 20px;
+  }
+  .alphabet {
+    margin-bottom: 10px;
   }
 }
