@@ -29,7 +29,7 @@ function BestScores() {
       <Header type="first" content="Top 10" />
 
       {loading ? (
-        "Fetching scores.."
+        "Waking up Mr Heroku (server) and then fetch some scores.."
       ) : (
         <div className="table">
           {scores.map((score, index) => {
