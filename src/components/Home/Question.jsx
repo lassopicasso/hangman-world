@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { api } from "../../constants/api";
+import { statsReaction } from "../../js/common";
 
 function Question({ setLetter, setAccomplished, correctLetters, setCorrectLetters, attempts, setAttempts, displayLetter, setDisplayLetter, gameStarted, countryData, setCountryData }) {
   const [worldData, setWorldData] = useState();
@@ -45,6 +46,7 @@ function Question({ setLetter, setAccomplished, correctLetters, setCorrectLetter
       if (!matchedLetter && /^[a-zA-Z]+$/.test(currentLetter) && currentLetter.length === 1 && !wrongLetters.includes(currentLetter)) {
         setWrongLetters((oldLetters) => [...oldLetters, currentLetter]);
         setAttempts(attempts + 1);
+        statsReaction(".stats__attempt");
       }
       setDisplayLetter(false);
     }
@@ -100,6 +102,7 @@ function Question({ setLetter, setAccomplished, correctLetters, setCorrectLetter
       });
       window.dispatchEvent(evt);
       setAttempts(attempts + 1);
+      statsReaction(".stats__attempt");
     }
     // eslint-disable-next-line
   }, [displayLetter]);

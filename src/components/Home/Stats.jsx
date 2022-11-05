@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { statsReaction } from "../../js/common";
 
 function Stats({ accomplished, attempts, setAttempts, setDisplayLetter, gameFinished, setGameFinished, gameStarted, setGameStarted, setFailedCountry, countryData, score, setScore }) {
   const [chances, setChances] = useState(5);
@@ -6,15 +7,7 @@ function Stats({ accomplished, attempts, setAttempts, setDisplayLetter, gameFini
   useEffect(() => {
     if (accomplished === true && !gameFinished) {
       setScore(score + 1);
-      let changeStyleScore = document.querySelector(".stats__score");
-      console.log("gooogle");
-      changeStyleScore.style.color = "black";
-      changeStyleScore.style.backgroundColor = "rgba(255, 255, 255, 0.4)";
-      setTimeout(() => {
-        changeStyleScore.style.color = "white";
-        changeStyleScore.style.backgroundColor = "rgba(0, 0, 0, 0.1)";
-      }, 1500);
-
+      statsReaction(".stats__score");
       setChances(chances + 1);
     }
     // eslint-disable-next-line
@@ -44,7 +37,7 @@ function Stats({ accomplished, attempts, setAttempts, setDisplayLetter, gameFini
         Display letter (+1 attempt)
       </button>
       <div className="stats__number">
-        <div>
+        <div className="stats__attempt">
           Attempts: {attempts} / {chances}
         </div>
         <div className="stats__score">Score: {score} </div>
