@@ -6,6 +6,15 @@ function Stats({ accomplished, attempts, setAttempts, setDisplayLetter, gameFini
   useEffect(() => {
     if (accomplished === true && !gameFinished) {
       setScore(score + 1);
+      let changeStyleScore = document.querySelector(".stats__score");
+      console.log("gooogle");
+      changeStyleScore.style.color = "black";
+      changeStyleScore.style.backgroundColor = "rgba(255, 255, 255, 0.4)";
+      setTimeout(() => {
+        changeStyleScore.style.color = "white";
+        changeStyleScore.style.backgroundColor = "rgba(0, 0, 0, 0.1)";
+      }, 1500);
+
       setChances(chances + 1);
     }
     // eslint-disable-next-line
@@ -38,7 +47,7 @@ function Stats({ accomplished, attempts, setAttempts, setDisplayLetter, gameFini
         <div>
           Attempts: {attempts} / {chances}
         </div>
-        <div>Score: {score} </div>
+        <div className="stats__score">Score: {score} </div>
       </div>
     </div>
   );
