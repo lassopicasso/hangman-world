@@ -7,7 +7,6 @@ function Stats({ accomplished, attempts, setAttempts, setDisplayLetter, gameFini
   useEffect(() => {
     if (accomplished === true && !gameFinished) {
       setScore(score + 1);
-      console.log("You were correct!");
       statsReaction(".stats__score");
       setChances(chances + 1);
     }

@@ -24,14 +24,12 @@ function Home() {
   const [replacePosition, setReplacePosition] = useState(false);
 
   usePrompt("Are you sure you want to leave before your finish the game? Progress will be lost.", gameStarted);
-  console.log(gameFinished);
   useEffect(() => {
     (async function fetchData() {
       try {
         const response = await fetch(apiScores);
         if (response.ok) {
           const data = await response.json();
-          console.log(data.data);
           let sortedScores = data.data.sort((a, b) => b.attributes.score - a.attributes.score);
           setTop10(sortedScores);
         }
@@ -45,7 +43,6 @@ function Home() {
   //When game is over, check if player made it to top 10
   useEffect(() => {
     if (gameFinished) {
-      console.log(top10);
       for (let i = 0; i < top10.length; i++) {
         if (top10[i].attributes.score < score) {
           setReplacePosition({ id: top10[i].id, position: i + 1, name: username });

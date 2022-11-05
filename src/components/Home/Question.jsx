@@ -12,7 +12,6 @@ function Question({ setLetter, setAccomplished, correctLetters, setCorrectLetter
     if (gameStarted) {
       setAccomplished(false);
       let currentLetter = event.key;
-      console.log(currentLetter);
       setLetter(event.key);
       const capital = countryData.capital;
       let matchedLetter = capital.match(currentLetter) || capital.toLowerCase().match(currentLetter.toLowerCase()) !== null;
@@ -88,7 +87,6 @@ function Question({ setLetter, setAccomplished, correctLetters, setCorrectLetter
 
   useEffect(() => {
     //Display the first hidden letter with a simulated keyboard event.
-    console.log(displayLetter);
     if (countryData && displayLetter) {
       let char;
       for (let i = 0; i < countryData.capital.length; i++) {

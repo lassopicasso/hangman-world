@@ -2,7 +2,6 @@
 //https://codepen.io/kareem-mahmoud/pen/abpamZp
 
 export function confetti(replacePosition) {
-  console.log(replacePosition);
   if (replacePosition) {
     for (let i = 0; i < 100; i++) {
       // Random rotation

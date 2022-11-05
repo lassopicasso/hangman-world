@@ -12,9 +12,7 @@ function BestScores() {
         const response = await fetch(apiScores);
         if (response.ok) {
           const data = await response.json();
-          console.log(data.data);
           let sortedScores = data.data.sort((a, b) => b.attributes.score - a.attributes.score);
-          console.log(sortedScores);
           setScores(sortedScores);
         }
       } catch (error) {
@@ -36,7 +34,6 @@ function BestScores() {
         <div className="table">
           {scores.map((score, index) => {
             let ordinalNumber = index === 0 ? "st" : index === 1 ? "nd" : index === 2 ? "rd" : "th";
-            console.log(ordinalNumber);
             return (
               <div className="table__element" key={index}>
                 <div>{score.attributes.name} </div>
