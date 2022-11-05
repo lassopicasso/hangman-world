@@ -56,7 +56,7 @@ function Modal({ gameStarted, setGameStarted, username, setUsername, gameFinishe
                     {" "}
                     You got {score} correct!{" "}
                   </span>{" "}
-                  {replacePosition ? `And you made it into top 10 at ${replacePosition.position}th place! Well done!` : `Only ${Math.min(...top10.map((item) => item.attributes.score)) - score + 1} points to 10th place.`}
+                  {replacePosition ? `And you made it into top 10 at ${replacePosition.position}th place! Well done!` : `${Math.min(...top10.map((item) => item.attributes.score)) - score + 1} points more to 10th place.`}
                 </span>
                 <span className="welcome__block welcome__question"> Want to try again, {username}?</span>
               </p>
