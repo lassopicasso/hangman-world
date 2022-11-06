@@ -78,13 +78,12 @@ function Home() {
     // eslint-disable-next-line
   }, [replacePosition]);
 
-  //Change color on body when focus/blur (gives player a notice if keyboard is active or not, when a key is pressed)
+  // //Change color on body when focus/blur (gives player a notice if keyboard is active or not, when a key is pressed)
   const body = document.querySelector("body");
-  // body.style.backgroundColor = "ligthblue";
-  body.addEventListener("blur", () => {
+  window.addEventListener("blur", () => {
     body.style.backgroundColor = "rgba(0,0,0, 0.2)";
   });
-  body.addEventListener("focus", () => {
+  window.addEventListener("focus", () => {
     body.style.backgroundColor = "lightblue";
   });
 
