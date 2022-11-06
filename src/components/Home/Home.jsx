@@ -31,7 +31,7 @@ function Home() {
         if (response.ok) {
           const data = await response.json();
           let sortedScores = data.data.sort((a, b) => b.attributes.score - a.attributes.score);
-          setTop10(sortedScores);
+          setTop10(sortedScores.slice(0, 10));
         }
       } catch (error) {
         console.log(error);
@@ -60,16 +60,15 @@ function Home() {
         data: { name: username, score: score },
       });
       const options = {
-        method: "PUT",
+        method: "POST",
         body: data,
         headers: {
           "Content-Type": "application/json",
         },
       };
       (async function addToTop10() {
-        const apiPosition = apiScores + "/" + replacePosition.id;
         try {
-          const response = await fetch(apiPosition, options);
+          const response = await fetch(apiScores, options);
           console.log(response);
         } catch (error) {
           console.log(error);

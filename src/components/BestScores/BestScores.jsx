@@ -13,7 +13,7 @@ function BestScores() {
         if (response.ok) {
           const data = await response.json();
           let sortedScores = data.data.sort((a, b) => b.attributes.score - a.attributes.score);
-          setScores(sortedScores);
+          setScores(sortedScores.slice(0, 10));
         }
       } catch (error) {
       } finally {
@@ -31,9 +31,8 @@ function BestScores() {
         <span className="top-header">
           <Header type="first" content="Top 10" />
         </span>
-
         {loading ? (
-          "Waking up Mr Heroku (server) and then fetch some scores.."
+          <span style={{ color: "white" }}>"Waking up Mr Heroku (server) and then fetch some scores.."</span>
         ) : (
           <div className="table">
             {scores.map((score, index) => {
