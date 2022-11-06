@@ -62,6 +62,10 @@ h1 {
   }
 }
 
+body:focus-within {
+  background-color: lightblue;
+}
+
 .game {
   height: 90%;
   display: flex;
