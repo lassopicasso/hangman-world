@@ -79,13 +79,13 @@ function Home() {
   }, [replacePosition]);
 
   // //Change color on body when focus/blur (gives player a notice if keyboard is active or not, when a key is pressed)
-  const body = document.querySelector("body");
-  window.addEventListener("blur", () => {
-    body.style.backgroundColor = "rgba(0,0,0, 0.2)";
-  });
-  window.addEventListener("focus", () => {
-    body.style.backgroundColor = "lightblue";
-  });
+  // const body = document.querySelector("body");
+  // window.addEventListener("blur", () => {
+  //   body.style.backgroundColor = "rgba(0,0,0, 0.2)";
+  // });
+  // window.addEventListener("focus", () => {
+  //   body.style.backgroundColor = "lightblue";
+  // });
 
   return (
     <>
