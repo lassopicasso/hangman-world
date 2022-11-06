@@ -10,6 +10,7 @@ function Question({ setLetter, setAccomplished, correctLetters, setCorrectLetter
   const [chosenCountries, setChosenCountries] = useState();
 
   onkeyup = (event) => {
+    console.log(chosenCountries.length);
     if (gameStarted) {
       setAccomplished(false);
       let currentLetter = event.key;
@@ -36,6 +37,11 @@ function Question({ setLetter, setAccomplished, correctLetters, setCorrectLetter
             highLightEl.style.color = "black";
             console.log(chosenCountries);
             const country = chosenCountries[Math.floor(Math.random() * chosenCountries.length)];
+            let currentCountriesLeft = chosenCountries.filter((place) => place.name !== country.name);
+            setChosenCountries(currentCountriesLeft);
+            if (currentCountriesLeft.length === 0) {
+              setAttempts(100);
+            }
             setCountryData(country);
             setAccomplished(true);
             setWrongLetters([]);
