@@ -33,9 +33,13 @@ function Stats({ accomplished, attempts, setAttempts, setDisplayLetter, gameFini
 
   return (
     <div className="stats game__block">
-      <button className="cta cta-letter" onClick={() => setDisplayLetter(true)}>
-        Display letter (+1 attempt)
-      </button>
+      {attempts === chances ? (
+        <button className="cta cta-letter cta-disabled">Maxed out attempts</button>
+      ) : (
+        <button className="cta cta-letter" onClick={() => setDisplayLetter(true)}>
+          Display letter (+1 attempt)
+        </button>
+      )}
       <div className="stats__number">
         <div className="stats__attempt">
           Attempts: {attempts} / {chances}

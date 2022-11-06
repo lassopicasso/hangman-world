@@ -16,6 +16,16 @@
     background-color: green;
   }
 }
+
+.cta-disabled {
+  opacity: 0.6;
+  &:hover {
+    background-color: lightgreen;
+    color: black;
+    cursor: default;
+  }
+}
+
 .cta-letter {
   font-size: 18px;
   margin: 5px;
