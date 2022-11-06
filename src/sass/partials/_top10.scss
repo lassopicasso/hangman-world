@@ -45,3 +45,12 @@
     background-color: #a97142;
   }
 }
+
+.backgroundImg {
+  position: fixed;
+  inset: 0;
+  background-image: url(../../images/earth.jpg);
+  background-size: cover;
+  opacity: 0.8;
+  background-position: center;
+}
