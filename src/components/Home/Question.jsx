@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { api } from "../../constants/api";
 import { statsReaction } from "../../js/common";
+import { europe, asia, africa, america, oceania } from "../../constants/continents";
 
-function Question({ setLetter, setAccomplished, correctLetters, setCorrectLetters, attempts, setAttempts, displayLetter, setDisplayLetter, gameStarted, countryData, setCountryData }) {
-  const [worldData, setWorldData] = useState();
+function Question({ setLetter, setAccomplished, correctLetters, setCorrectLetters, attempts, setAttempts, displayLetter, setDisplayLetter, gameStarted, countryData, setCountryData, continent, worldData, setWorldData }) {
   const [loading, setLoading] = useState(true);
   const [underscore, setUnderscore] = useState();
   const [wrongLetters, setWrongLetters] = useState([]);
+  const [chosenCountries, setChosenCountries] = useState();
 
   onkeyup = (event) => {
     if (gameStarted) {
@@ -29,10 +30,12 @@ function Question({ setLetter, setAccomplished, correctLetters, setCorrectLetter
         if (currentUnderscore === countryData.capital) {
           setUnderscore(currentUnderscore);
           let highLightEl = document.querySelector(".question__capital");
+          console.log(highLightEl);
           highLightEl.style.color = "green";
           setTimeout(() => {
             highLightEl.style.color = "black";
-            const country = worldData[Math.floor(Math.random() * worldData.length)];
+            console.log(chosenCountries);
+            const country = chosenCountries[Math.floor(Math.random() * chosenCountries.length)];
             setCountryData(country);
             setAccomplished(true);
             setWrongLetters([]);
@@ -52,8 +55,25 @@ function Question({ setLetter, setAccomplished, correctLetters, setCorrectLetter
   };
 
   useEffect(() => {
+    let countriesArray;
+    let currentContinent = continent === "europe" ? europe : continent === "asia" ? asia : continent === "africa" ? africa : continent === "america" ? america : continent === "oceania" ? oceania : worldData;
+    if (worldData) {
+      if (continent !== "world") {
+        countriesArray = worldData.filter((country) => currentContinent.includes(country.iso3));
+        setChosenCountries(countriesArray);
+      } else {
+        countriesArray = worldData;
+        setChosenCountries(countriesArray);
+      }
+      const country = countriesArray[Math.floor(Math.random() * countriesArray.length)];
+      setCountryData(country);
+    }
+    // eslint-disable-next-line
+  }, [continent]);
+
+  useEffect(() => {
     if (!gameStarted && worldData) {
-      const country = worldData[Math.floor(Math.random() * worldData.length)];
+      const country = chosenCountries[Math.floor(Math.random() * chosenCountries.length)];
       setCountryData(country);
       setAccomplished(true);
       setWrongLetters([]);

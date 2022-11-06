@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-function Modal({ gameStarted, setGameStarted, username, setUsername, gameFinished, setGameFinished, failedCountry, score, replacePosition, setReplacePosition, top10 }) {
+function Modal({ gameStarted, setGameStarted, username, setUsername, gameFinished, setGameFinished, failedCountry, score, replacePosition, setReplacePosition, top10, setContinent, continent, worldData, setWorldData }) {
   const [tooShort, setTooShort] = useState(false);
   const [tooLong, setTooLong] = useState(false);
 
@@ -37,6 +37,11 @@ function Modal({ gameStarted, setGameStarted, username, setUsername, gameFinishe
     }
     setGameFinished(false);
   }
+
+  // useEffect(() => {
+  // if(world)
+
+  // }, [continent])
 
   return (
     <div className="welcome" style={{ opacity: gameStarted ? 0 : 1, zIndex: gameStarted ? 0 : 10 }}>
@@ -80,6 +85,29 @@ function Modal({ gameStarted, setGameStarted, username, setUsername, gameFinishe
               </div>
             </>
           )}
+          <div className="welcome__continents">
+            {/* <span className="welcome__block">Chose continent:</span> */}
+            <div className="welcome__continents--wrapper">
+              <button className={`cta-continent${continent === "world" ? "-active" : ""}`} onClick={() => setContinent("world")}>
+                World
+              </button>
+              <button className={`cta-continent${continent === "europe" ? "-active" : ""}`} onClick={() => setContinent("europe")}>
+                Europe
+              </button>
+              <button className={`cta-continent${continent === "africa" ? "-active" : ""}`} onClick={() => setContinent("africa")}>
+                Africa
+              </button>
+              <button className={`cta-continent${continent === "asia" ? "-active" : ""}`} onClick={() => setContinent("asia")}>
+                Asia
+              </button>
+              <button className={`cta-continent${continent === "oceania" ? "-active" : ""}`} onClick={() => setContinent("oceania")}>
+                Oceania
+              </button>
+              <button className={`cta-continent${continent === "america" ? "-active" : ""}`} onClick={() => setContinent("america")}>
+                America
+              </button>
+            </div>
+          </div>
           <button className="cta" onClick={startGame}>
             {gameFinished ? "Try again!" : "Start game"}
           </button>

@@ -1,11 +1,17 @@
 .cta {
-  border-radius: 10px;
-  border: none;
-  padding: 8px 20px !important;
   min-width: 150px;
   max-width: 250px;
-  box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.2);
+  padding: 8px 20px !important;
   font-size: 20px;
+}
+.cta,
+.cta-continent,
+.cta-continent-active,
+.cta-filter,
+.cta-filter-active {
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.2);
   background-color: lightgreen;
   font-family: "Bebas Neue";
   outline: none;
@@ -30,6 +36,38 @@
   font-size: 18px;
   margin: 5px;
 }
+
+.welcome__continents {
+  display: block;
+  text-align: center;
+  box-sizing: border-box;
+  .welcome__continents--wrapper {
+    box-sizing: border-box;
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
+    .cta-continent,
+    .cta-continent-active {
+      font-family: "Display Playful";
+      border-radius: 0;
+      padding: 3px 10px;
+      margin: 3px;
+      font-size: 16px;
+      background-color: rgba(144, 238, 144, 0.5);
+      &:hover {
+        color: white;
+        background-color: green;
+      }
+    }
+    .cta-continent-active {
+      color: white;
+      background-color: green;
+    }
+  }
+}
+
 .cta--small {
   font-family: "Playful Display";
   display: block;
@@ -53,8 +91,32 @@
   }
 }
 
+.cta-filters {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 2px;
+  max-width: 500px;
+  margin: auto;
+  margin-bottom: 2px;
+  .cta-filter,
+  .cta-filter-active {
+    border-radius: 0px !important;
+  }
+  .cta-filter-active {
+    color: white;
+    background-color: green;
+  }
+}
+
 @media screen and (max-width: 400px) {
   .cta {
     width: 95%;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .cta-filter,
+  .cta-filter-active {
+    font-size: 16px;
   }
 }

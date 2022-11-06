@@ -2,6 +2,7 @@
 //https://codepen.io/kareem-mahmoud/pen/abpamZp
 
 export function confetti(replacePosition) {
+  document.getElementById("confetti-wrapper").style.zIndex = "0";
   if (replacePosition) {
     for (let i = 0; i < 100; i++) {
       // Random rotation
@@ -14,7 +15,6 @@ export function confetti(replacePosition) {
 
       // Random animation-delay
       var randomAnimationDelay = Math.floor(Math.random() * 15);
-      console.log(randomAnimationDelay);
 
       // Random colors
       var colors = ["#0CD977", "#FF1C1C", "#FF93DE", "#5767ED", "#FFC61C", "#8497B0"];
