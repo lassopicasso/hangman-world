@@ -80,12 +80,12 @@ function Home() {
 
   //Change color on body when focus/blur (gives player a notice if keyboard is active or not, when a key is pressed)
   const body = document.querySelector("body");
-  body.style.backgroundColor = "lightblue";
+  body.style.backgroundColor = "ligthblue";
   window.addEventListener("focus", () => {
     body.style.backgroundColor = "lightblue";
   });
   window.addEventListener("blur", () => {
-    body.style.backgroundColor = "#FFCCCB";
+    body.style.backgroundColor = "rgba(0,0,0, 0.2)";
   });
 
   return (
@@ -103,6 +103,7 @@ function Home() {
         setReplacePosition={setReplacePosition}
         top10={top10}
       />
+      <div className="backgroundImg backgroundImg-home"></div>
       <main>
         <Header type="first" content="Hangman World" />
         <div className="game">

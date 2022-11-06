@@ -53,7 +53,7 @@ h1 {
     > * {
       margin: 5px;
       padding: 10px;
-      background-color: rgba(0, 0, 0, 0.1);
+      background-color: rgba(0, 0, 0, 0.2);
       color: white;
       border-radius: 10px;
       transition: 1 s;
@@ -107,4 +107,8 @@ body:focus-within {
   overflow: hidden !important;
   position: absolute;
   inset: 0;
+}
+
+.backgroundImg-home {
+  opacity: 0.2 !important;
 }

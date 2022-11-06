@@ -6,12 +6,14 @@
 .alphabet__underscore {
   font-size: 22px;
   margin-bottom: 5px;
+  font-weight: bold;
 }
 .alphabet__displayed {
   letter-spacing: 5.5px;
   transition: 2s;
   font-weight: bold;
   cursor: pointer;
+  text-shadow: 0 0 0.1px black;
   &:hover {
     transform: scale(1.2);
     font-weight: bold;
@@ -22,16 +24,18 @@
 }
 
 .alphabet__success {
-  color: #13bf0a;
+  color: #0dff00;
 }
 
 .alphabet__failure {
-  color: red;
+  color: rgb(255, 0, 0);
 }
 .alphabet__letter {
+  backdrop-filter: blur(5px);
   padding-top: 10px;
   display: flex;
   flex-direction: column;
+  padding: 1px;
   margin-left: 3px !important;
   font-size: 23px;
 }
