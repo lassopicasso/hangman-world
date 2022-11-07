@@ -93,9 +93,11 @@ function Question({ setLetter, setAccomplished, correctLetters, setCorrectLetter
       try {
         const response = await fetch(api);
         const data = await response.json();
+        console.log(data);
         const countriesWithCapitals = data.data.filter((country) => country.capital.length > 0);
         setWorldData(countriesWithCapitals);
         const country = countriesWithCapitals[Math.floor(Math.random() * countriesWithCapitals.length)];
+        console.log(country);
         console.log(chosenCountries);
         setCountryData(country);
         setChosenCountries((oldCountries) => [...oldCountries, country]);
@@ -137,7 +139,7 @@ function Question({ setLetter, setAccomplished, correctLetters, setCorrectLetter
   if (loading) {
     return <main>Fetching World...</main>;
   }
-  console.log(countryData);
+
   return (
     <div className="question game__block" style={{ opacity: gameStarted ? 1 : 0 }}>
       <div>What is the capital of "{countryData.name}"?</div>
