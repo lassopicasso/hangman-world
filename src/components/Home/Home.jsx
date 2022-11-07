@@ -22,7 +22,6 @@ function Home({ continent, setContinent }) {
   const [failedCountry, setFailedCountry] = useState();
   const [score, setScore] = useState(0);
   const [replacePosition, setReplacePosition] = useState(false);
-
   const [worldData, setWorldData] = useState();
 
   usePrompt("Are you sure you want to leave before your finish the game? Progress will be lost.", gameStarted);

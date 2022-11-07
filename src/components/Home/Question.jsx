@@ -72,7 +72,7 @@ function Question({ setLetter, setAccomplished, correctLetters, setCorrectLetter
       setCountryData(country);
     }
     // eslint-disable-next-line
-  }, [continent]);
+  }, [continent, worldData]);
 
   useEffect(() => {
     if (!gameStarted && worldData) {
