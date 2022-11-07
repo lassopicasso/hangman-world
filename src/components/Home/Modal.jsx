@@ -50,10 +50,10 @@ function Modal({ gameStarted, setGameStarted, username, setUsername, gameFinishe
           {gameFinished && username ? (
             <div className="welcome__text">
               <p>
-                <span className="welcome__block">
+                <span className="welcome__block welcome__intro">
                   {replacePosition ? "Well done!" : "Ups!"} You ran out of attempts{replacePosition ? ", but did good!" : "."}
                 </span>
-                <span className="welcome__block">
+                <span className="welcome__block welcome__intro">
                   The capital of <span className="welcome__bold">{failedCountry.name}</span> is <span className="welcome__bold">{failedCountry.capital}</span>
                 </span>
                 <span className="welcome__bold">

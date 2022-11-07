@@ -101,6 +101,8 @@
   .cta-filter,
   .cta-filter-active {
     border-radius: 0px !important;
+    padding: 2px 0;
+    font-size: 17px;
   }
   .cta-filter-active {
     color: white;
@@ -117,6 +119,6 @@
 @media screen and (min-width: 600px) {
   .cta-filter,
   .cta-filter-active {
-    font-size: 16px;
+    font-size: 17px;
   }
 }
