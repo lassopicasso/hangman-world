@@ -7,10 +7,10 @@ function Question({ setLetter, setAccomplished, correctLetters, setCorrectLetter
   const [loading, setLoading] = useState(true);
   const [underscore, setUnderscore] = useState();
   const [wrongLetters, setWrongLetters] = useState([]);
-  const [chosenCountries, setChosenCountries] = useState();
+  const [chosenCountries, setChosenCountries] = useState([]);
 
   onkeyup = (event) => {
-    console.log(chosenCountries.length);
+    console.log(event);
     if (gameStarted) {
       setAccomplished(false);
       let currentLetter = event.key;
@@ -79,6 +79,7 @@ function Question({ setLetter, setAccomplished, correctLetters, setCorrectLetter
 
   useEffect(() => {
     if (!gameStarted && worldData) {
+      console.log(chosenCountries);
       const country = chosenCountries[Math.floor(Math.random() * chosenCountries.length)];
       setCountryData(country);
       setAccomplished(true);
@@ -95,7 +96,9 @@ function Question({ setLetter, setAccomplished, correctLetters, setCorrectLetter
         const countriesWithCapitals = data.data.filter((country) => country.capital.length > 0);
         setWorldData(countriesWithCapitals);
         const country = countriesWithCapitals[Math.floor(Math.random() * countriesWithCapitals.length)];
+        console.log(chosenCountries);
         setCountryData(country);
+        setChosenCountries((oldCountries) => [...oldCountries, country]);
       } catch (error) {
         console.log(error);
       } finally {
@@ -134,7 +137,7 @@ function Question({ setLetter, setAccomplished, correctLetters, setCorrectLetter
   if (loading) {
     return <main>Fetching World...</main>;
   }
-
+  console.log(countryData);
   return (
     <div className="question game__block" style={{ opacity: gameStarted ? 1 : 0 }}>
       <div>What is the capital of "{countryData.name}"?</div>
