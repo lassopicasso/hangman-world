@@ -142,7 +142,7 @@ function Question({ setLetter, setAccomplished, correctLetters, setCorrectLetter
 
   return (
     <div className="question game__block" style={{ opacity: gameStarted ? 1 : 0 }}>
-      <div>What is the capital of "{countryData.name}"?</div>
+      {countryData !== undefined && <div>What is the capital of "{countryData.name}"?</div>}
       <div className="question__capital">{underscore}</div>
     </div>
   );
