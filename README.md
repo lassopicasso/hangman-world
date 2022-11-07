@@ -1,7 +1,8 @@
 # hangman-world
 
-Website: [Hangman World](https://hangman-world.netlify.app/)
 Hangman game where the player can challenge themselves in geography.
+
+Website: [Hangman World](https://hangman-world.netlify.app/)
 
 ## Description
 
