@@ -15,7 +15,6 @@ function BestScores({ continent, setContinent }) {
           const data = await response.json();
           let sortedScores = data.data.sort((a, b) => b.attributes.score - a.attributes.score);
           setScores(sortedScores.slice(0, 10));
-          console.log(sortedScores);
         }
       } catch (error) {
       } finally {

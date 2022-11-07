@@ -45,12 +45,9 @@ function Home({ continent, setContinent }) {
 
   //When game is over, check if player made it to top 10
   useEffect(() => {
-    console.log("heee");
-    console.log(gameFinished);
     if (gameFinished) {
       for (let i = 0; i < top10.length; i++) {
         if (top10[i].attributes.score < score) {
-          console.log("yes?");
           setReplacePosition({ id: top10[i].id, position: i + 1, name: username });
           break;
         }
@@ -60,7 +57,6 @@ function Home({ continent, setContinent }) {
   }, [gameFinished]);
 
   useEffect(() => {
-    console.log(replacePosition);
     confetti(replacePosition);
     if (replacePosition) {
       const data = JSON.stringify({

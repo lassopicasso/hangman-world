@@ -10,7 +10,6 @@ function Question({ setLetter, setAccomplished, correctLetters, setCorrectLetter
   const [chosenCountries, setChosenCountries] = useState([]);
 
   onkeyup = (event) => {
-    console.log(event);
     if (gameStarted) {
       setAccomplished(false);
       let currentLetter = event.key;
@@ -31,11 +30,9 @@ function Question({ setLetter, setAccomplished, correctLetters, setCorrectLetter
         if (currentUnderscore === countryData.capital) {
           setUnderscore(currentUnderscore);
           let highLightEl = document.querySelector(".question__capital");
-          console.log(highLightEl);
           highLightEl.style.color = "green";
           setTimeout(() => {
             highLightEl.style.color = "black";
-            console.log(chosenCountries);
             const country = chosenCountries[Math.floor(Math.random() * chosenCountries.length)];
             let currentCountriesLeft = chosenCountries.filter((place) => place.name !== country.name);
             setChosenCountries(currentCountriesLeft);
@@ -79,7 +76,6 @@ function Question({ setLetter, setAccomplished, correctLetters, setCorrectLetter
 
   useEffect(() => {
     if (!gameStarted && worldData) {
-      console.log(chosenCountries);
       const country = chosenCountries[Math.floor(Math.random() * chosenCountries.length)];
       setCountryData(country);
       setAccomplished(true);
@@ -93,12 +89,9 @@ function Question({ setLetter, setAccomplished, correctLetters, setCorrectLetter
       try {
         const response = await fetch(api);
         const data = await response.json();
-        console.log(data);
         const countriesWithCapitals = data.data.filter((country) => country.capital.length > 0);
         setWorldData(countriesWithCapitals);
         const country = countriesWithCapitals[Math.floor(Math.random() * countriesWithCapitals.length)];
-        console.log(country);
-        console.log(chosenCountries);
         setCountryData(country);
         setChosenCountries((oldCountries) => [...oldCountries, country]);
       } catch (error) {
