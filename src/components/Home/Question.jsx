@@ -39,7 +39,7 @@ function Question({ setLetter, setAccomplished, correctLetters, setCorrectLetter
             const country = chosenCountries[Math.floor(Math.random() * chosenCountries.length)];
             let currentCountriesLeft = chosenCountries.filter((place) => place.name !== country.name);
             setChosenCountries(currentCountriesLeft);
-            if (currentCountriesLeft.length === 0) {
+            if (currentCountriesLeft.length < 1) {
               setAttempts(100);
             }
             setCountryData(country);
