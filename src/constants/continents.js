@@ -24,7 +24,6 @@ export const europe = [
   "HUN",
   "ISL",
   "IRL",
-  "IMN",
   "ITA",
   "JEY",
   "LVA",
