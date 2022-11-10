@@ -89,7 +89,7 @@ function Question({ setLetter, setAccomplished, correctLetters, setCorrectLetter
       try {
         const response = await fetch(api);
         const data = await response.json();
-        const countriesWithCapitals = data.data.filter((country) => country.capital.length > 0);
+        const countriesWithCapitals = data.data.filter((country) => country.capital.length > 0 && country.iso3 !== "IMN");
         setWorldData(countriesWithCapitals);
         const country = countriesWithCapitals[Math.floor(Math.random() * countriesWithCapitals.length)];
         setCountryData(country);
